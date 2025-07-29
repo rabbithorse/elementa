@@ -1,0 +1,17 @@
+html {
+  font-size: 62.5%; /* ≒ 10px */
+}
+
+body {
+  font-family: 'Noto Sans JP', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN','Yu Gothic', YuGothic, Verdana, Meiryo, sans-serif;
+  font-size: 1.6rem;
+  font-weight: 400;
+  font-feature-settings: "palt" 1;
+  line-height: 1.6;
+  letter-spacing: .05em;
+  text-size-adjust: 100%;
+}
+
+h1, h2, h3, h4, h5, h6, strong {
+  font-weight: 900;
+}

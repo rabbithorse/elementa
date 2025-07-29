@@ -1,0 +1,48 @@
+/* stylelint-disable color-hex-length */
+:root {
+  /* color ------------------------------------------- */
+  --color-navy             : #112631;
+  --color-pink             : #FF009E;
+  --color-cyan             : #0EB7DE;
+  --color-yellow           : #FFCC00;
+  --color-magenta          : #FC658C;
+  --color-twitter          : #000000;
+  --color-line             : #00B900;
+  --color-youtube          : #FF0000;
+  --color-facebook         : #1877F2;
+  --color-chouchou         : #151e5d;
+  
+  /* footer 背景色とテキスト（各アプリ、Share、toTop共通） */
+  --color-fotter-text      : #000;
+  --color-fotter-background: #fff;
+  
+  /* boys タグカラー */
+  --color-basic            : #006eeb;
+  --color-music            : #ff8700;
+
+  /* boys フッターカラー */
+  --color-boys-gray        : #e2ebeb;
+  --color-boys-yellow      : #fff100;
+  --color-boys-navy        : #0c1a5d;
+
+   /* ユーティリティ */
+  --color-overlay-light    : rgb(255 255 255 / 80%);
+  --color-overlay-dark     : rgb(0 0 0 / 80%);
+  
+/* スクロールバー */
+  --color-scrollbar-thumb  : #006eeb;
+  --color-scrollbar-track  : #ff8700;
+
+  /* z-index -------------------------------------- */
+  
+  --zindex-tab         :   700; /* タブ */
+  --zindex-slick       :   800; /* slick */
+  --zindex-footer      :   900; /* footer */
+  --zindex-nav         :  1000; /* ナビゲーション */
+  --zindex-yotubebox   :  1100; /* youtubeBox */
+  --zindex-lightbox    :  1200; /* LightBox */
+  --zindex-modal       :  1300; /* modalBox */
+  --zindex-movie       :  1400; /* movie */
+  --zindex-app         :   870; /* 各種App */
+  --zindex-op          : 30000; /* ローディング */
+}

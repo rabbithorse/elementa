@@ -1,0 +1,57 @@
+@import url('variables.css');
+@import url('fonts.css');
+
+:root {
+  scrollbar-color: var(--color-scrollbar-thumb) var(--color-scrollbar-track);
+  scrollbar-gutter: stable;
+  scrollbar-width: thin;
+  &::-webkit-scrollbar { width: 4px; height: 4px; }
+  &::-webkit-scrollbar-thumb, &::-webkit-scrollbar-track { border-radius: 16px; }
+  &::-webkit-scrollbar-thumb { background-color: var(--color-scrollbar-thumb); }
+  &::-webkit-scrollbar-track { background-color: var(--color-scrollbar-track); }
+}
+
+html {
+  overflow-x: hidden;
+  overscroll-behavior: none;
+}
+
+body {
+  height: 100%;
+  overflow: hidden;
+  background-color: var(--color-cyan);
+
+  &.-loaded {
+    height: auto;
+    overflow: inherit;
+
+    &.-modal, &.-fixed { /* modal時にbodyを固定する */
+      height: 100%;
+      overflow: hidden;
+    }
+  }
+}
+
+.dummy {
+  outline: 1px red solid;
+
+  &:before {
+    position: absolute;
+    z-index: 1;
+    display: inline-block;
+    padding: .1em .5em;
+    font-size: .25rem !important;
+    color: #fff;
+    content: 'dummy';
+    background-color: red;
+  }
+}
+
+img {
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  max-height: 100%;
+  vertical-align: bottom;
+  object-fit: contain;
+}

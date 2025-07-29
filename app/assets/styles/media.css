@@ -1,0 +1,5 @@
+/* usage: @media (--hoge) { ... } */
+@custom-media --sp (width <= 450px);
+@custom-media --tablet (450px < width < 768px);
+@custom-media --mobile (width < 768px);
+@custom-media --pc (768px < width);

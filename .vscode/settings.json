@@ -1,0 +1,16 @@
+{
+  "eslint.useFlatConfig": true,
+  "stylelint.enable": true,
+  "stylelint.configFile": "stylelint.config.mjs",
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "never",
+    "source.fixAll.eslint": "explicit",
+    "source.fixAll.stylelint": "explicit",
+  },
+  "css.validate": false,
+  "stylelint.validate": ["css", "vue"],
+  "files.associations": {
+    "*.css": "postcss",
+    "*.vue": "vue",
+  }
+}

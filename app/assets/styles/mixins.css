@@ -1,0 +1,11 @@
+@define-mixin border-radius $radius1:10px {
+  border-radius: $radius1;
+}
+
+@define-mixin dn {
+  color: red;
+}
+
+/* .hoge {
+  @mixin border-radius 20px;
+} */
