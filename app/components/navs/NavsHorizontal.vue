@@ -31,10 +31,10 @@
     display: none;
     flex-direction: row;
 
-    li {
+    & li {
       margin-right: 1em;
 
-      a {
+      & a {
         font-weight: bold;
         color: #fff;
         text-decoration: none;

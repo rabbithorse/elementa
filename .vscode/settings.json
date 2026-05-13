@@ -12,5 +12,9 @@
   "files.associations": {
     "*.css": "postcss",
     "*.vue": "vue",
-  }
+  },
+  "emmet.includeLanguages": {
+    "postcss": "css",
+  },
+  "emmet.triggerExpansionOnTab": true,
 }

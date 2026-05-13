@@ -27,7 +27,7 @@ const toggleActive = () => {
 
 <style scoped>
 .NavsPopup {
-  .fa-solid {
+  & .fa-solid {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -47,7 +47,7 @@ const toggleActive = () => {
   outline: none;
   transition: .25s cubic-bezier(0.25, 0.1, 0.25, 1.0);
 
-  > span {
+  & > span {
     position: absolute;
     top: 0;
     left: 0;
@@ -83,7 +83,7 @@ const toggleActive = () => {
     transform: scale(1);
   }
 
-  > .closeBtn {
+  & > .closeBtn {
     position: absolute;
     top: 0;
     right: 0;
@@ -91,7 +91,7 @@ const toggleActive = () => {
     height: 4.5em;
   }
 
-  > .navigation {
+  & > .navigation {
     display: flex;
     justify-content: flex-start;
     width: 100%;
@@ -106,11 +106,11 @@ const toggleActive = () => {
       margin: 0 auto;
       list-style-type: none;
 
-      > li {
+      & > li {
         margin-top: 1em;
         border-bottom: solid 1px #fff;
 
-        > a {
+        & > a {
           display: block;
           width: 100%;
           padding: 1em;

@@ -37,7 +37,7 @@ const toggleActive = () => {
   outline: none;
   transition: .25s cubic-bezier(0.25, 0.1, 0.25, 1.0);
 
-  > span {
+  & > span {
     position: absolute;
     top: 0;
     left: 0;
@@ -47,7 +47,7 @@ const toggleActive = () => {
     height: 100%;
     background-color: var(--color-navy);
 
-    .fa-solid {
+    & .fa-solid {
       position: absolute;
       top: 50%;
       left: 50%;
@@ -80,7 +80,7 @@ const toggleActive = () => {
     transform: translateX(0%);
   }
 
-  > .navigation {
+  & > .navigation {
     display: flex;
     justify-content: flex-start;
     width: 100%;
@@ -95,11 +95,11 @@ const toggleActive = () => {
       margin: 0 auto;
       list-style-type: none;
 
-      > li {
+      & > li {
         margin-top: 1em;
         border-bottom: solid 1px #fff;
 
-        > a {
+        & > a {
           display: block;
           width: 100%;
           padding: 1em;

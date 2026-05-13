@@ -31,10 +31,10 @@
     flex-direction: column;
     list-style-type: none;
 
-    li {
+    & li {
       margin-top: 1em;
 
-      a {
+      & a {
         font-weight: bold;
         color: #fff;
         text-decoration: none;

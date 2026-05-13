@@ -1,13 +1,17 @@
 <template>
   <div>
-    <!-- <Opening /> -->
+    <Opening />
     <NavsDrawer />
-    <div class="container">
-      <NuxtPage />
-    </div>
-    <!-- <Share />
-    <Totop /> -->
-    <!-- <Corpfooter /> -->
+    <lenis :options="LenisOptions">
+      <div class="container">
+        <NuxtPage />
+        <AppsBoysFooter />
+        <AppsChouchouFooter />
+        <Share />
+        <Totop />
+      </div>
+    </lenis>
+    <Corpfooter />
   </div>
 </template>
 
@@ -63,6 +67,13 @@ onMounted(() => {
     console.log(e)
   }
 })
+
+const LenisOptions = {
+  smooth: true,
+  duration: 1.2,
+  autoRaf: true,
+  direction: 'vertical'
+}
 </script>
 
 <style scoped>
@@ -79,6 +90,7 @@ onMounted(() => {
 
 .container {
   width: 100%;
+  max-width: 75rem;
   margin: 0 auto;
   overflow: hidden;
   background-color: #f5f5f5;

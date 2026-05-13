@@ -1,45 +1,46 @@
 <template>
-  <!-- usage: <SlidesDefault image="" alt="" /> -->
+  <!-- usage: <SlidesDafault :slides="" /> -->
   <div class="SlidesDafault">
-    <Swiper
-      :modules="[SwiperAutoplay, SwiperEffectCreative, SwiperPagination, SwiperNavigation]"
-      :slides-per-view="1"
-      :loop="true"
-      :pagination="true"
-      :navigation="true"
-      :autoplay="{
-        delay: 8000,
-        disableOnInteraction: true,
-      }"
-      :creative-effect="{
-        prev: {
-          // shadow: false,
-          translate: ['-20%', 0, -1],
-        },
-        next: {
-          translate: ['100%', 0, 0],
-        },
-      }"
-    >
-      <SwiperSlide v-for="(image, index) in images" :key="index">
-        <img :src="image" :alt="alt[index]">
-      </SwiperSlide>
-    </swiper>
+    <Splide :options="options" aria-label="default slide">
+      <!-- v-forを使ってスライドを動的に生成 -->
+      <SplideSlide v-for="(slide, index) in slides" :key="index" class="item">
+        <NuxtImg :src="`/images/slides/slide_${slide.id}.png`" :alt="slide.name" format="webp" class="img" />
+      </SplideSlide>
+    </Splide>
   </div>
 </template>
 
 <script setup lang="ts">
+const options = ref({
+  type: 'fade',
+  rewind: true,
+  autoplay: false,
+  interval: 5000,
+  speed: 800,
+  arrows: true,
+  pagination: true, // メインスライダーではページネーションを非表示
+})
+
 interface Props {
-  images: Array<string>
-  thumb: Array<string>
-  alt: Array<string>
+  slides: Array<{ id: number; name: string }>
 }
 const Props = withDefaults(defineProps<Props>(), {
-  images: () => [],
-  thumb: () => [],
-  alt: () => [],
+  slides: () => [],
 })
 </script>
 
 <style scoped>
+.SlidesDafault {
+  position: relative;
+  margin: 4em auto 3em;
+  & img { max-width: 100%; }
+
+  @media (--mobile) {
+    margin: 3em auto;
+  }
+
+  @media (--sp) {
+    margin: pxToVw(50,750) auto;
+  }
+}
 </style>

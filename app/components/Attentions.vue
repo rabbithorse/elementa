@@ -6,23 +6,23 @@
 </template>
 
 <style scoped>
-  ul {
-    width: 100%;
-    padding: 0 1em 2em;
-    margin: 2em auto 0;
-    list-style-position: inside;
-    list-style-type: none;
+.Attentions {
+  width: 100%;
+  padding: 0 1em 2em;
+  margin: 2em auto 0;
+  list-style-position: inside;
+  list-style-type: none;
 
-    li {
-      padding-left: 1.5em;
-      font-size: 1.1rem;
-      text-align: center;
-      text-indent: -1.5em;
+  & li {
+    padding-left: 1.5em;
+    font-size: 1.1rem;
+    text-align: center;
+    text-indent: -1.5em;
 
-      &:before {
-        padding-right: .5em;
-        content: "※";
-      }
+    &:before {
+      padding-right: .5em;
+      content: "※";
     }
   }
+}
 </style>

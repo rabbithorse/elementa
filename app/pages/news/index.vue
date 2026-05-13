@@ -1,27 +1,27 @@
 <template>
-  <div>
-    <CommonHeader title="NEWS" ruby="ニュースリリース" />
-    <CommonArticle>
-      <template v-if="news">
-        <ul class="newsList">
-          <li v-for="post in newsContents" :key="post.id" class="item" :title="post.title">
-            <NuxtLink :to="`/news/${post.id}`">
-              <div class="thumbnail">
-                <template v-if="post.cover">
-                  <img :src="`${post.cover.url}?fm=webp&q=25&fit=clip&w=400&h=400`" alt="image" />
-                </template>
-                <template v-else>
-                  <img src="./images/news/pic-nocover.png" alt="image" />
-                </template>
-              </div>
-              <p>{{ truncate(ref(post.title), 32) }}</p>
-              <time :datetime="post.publishedAt">{{ date(post.publishedAt) }} </time>
-            </NuxtLink>
-          </li>
-        </ul>
-        <CommonPagination v-if="news?.totalCount > LIMIT" :pager="news?.pager" :current="Number(page)" />
-      </template>
-    </CommonArticle>
+  <div class="wrapper">
+    <section class="news">
+      <div class="inner">
+        <hgroup class="secTtl">
+          <h1 class="en">NEWS</h1>
+          <p class="ja">お知らせ</p>
+        </hgroup>
+
+        <template v-if="news && news.contents.length">
+          <ul class="newsList">
+            <li v-for="post in news.contents" :key="post.id" class="item">
+              <NuxtLink :to="`/news/${post.id}`">
+                <time :datetime="String(post.publishedAt)" class="date">{{ date(post.publishedAt) }}</time>
+                <p class="title">{{ post.title }}</p>
+              </NuxtLink>
+            </li>
+          </ul>
+          <Pagination v-if="news.totalCount > LIMIT" :pager="news.pager" :current="page" />
+        </template>
+
+        <p v-else class="empty">お知らせはありません。</p>
+      </div>
+    </section>
   </div>
 </template>
 
@@ -29,138 +29,101 @@
 import type { News } from '~~/types/News'
 
 const route = useRoute()
+const LIMIT = 12
 
-// リアクティブなページ番号とオフセット
 const page = computed(() => Number(route.params.p) || 1)
-const LIMIT = 20
-const OFFSET = computed(() => (page.value - 1) * LIMIT)
-const newsContents = ref<News[]>([])
-// キーにページ番号を含めることで、ページが変わったらデータを再取得
-const { data: news } = await useAsyncData(
-  // 重要: キーにページ番号を含める
-  `news-page-${page.value}`,
+const offset = computed(() => (page.value - 1) * LIMIT)
 
+const { data: news } = await useAsyncData(
+  `news-page-${page.value}`,
   async () => {
-    const response = await useMicroCMSGetList<News>({
+    const { data } = await useMicroCMSGetList<News>({
       endpoint: 'news',
       queries: {
         limit: LIMIT,
-        offset: OFFSET.value, // computedの値を使用
+        offset: offset.value,
         orders: '-publishedAt',
+        fields: 'id,title,publishedAt',
       },
     })
-
+    const totalCount = data.value?.totalCount ?? 0
     return {
-      data: response.data,
-      totalCount: response.data?.value ? response.data.value.totalCount : 0,
-      pager: response.data?.value ? [...Array(Math.ceil(response.data.value.totalCount / LIMIT)).keys()] : [],
+      contents: data.value?.contents ?? [],
+      totalCount,
+      pager: [...Array(Math.ceil(totalCount / LIMIT)).keys()],
     }
   },
   {
-    // route.params.pの変更を監視（重要）
     watch: [() => route.params.p],
   },
 )
-
-newsContents.value = news.value?.data.value?.contents || []
-
-useSeoMeta({
-  title: `ニュースリリース | ${inject('globalSiteName')}`,
-  ogTitle: `ニュースリリース | ${inject('globalSiteName')}`,
-  ogUrl: inject('globalSiteUrl') + useRoute().path,
-})
 </script>
 
 <style scoped>
-.CommonPagination {
-  margin-top: calc(var(--bs) *2);
+.wrapper {
+  position: relative;
+  width: 100%;
 }
 
-a {
-  color: var(--color-navy);
-  text-decoration: none;
+.inner {
+  width: min(90%, 1200px);
+  padding: 4rem 0;
+  margin: 0 auto;
+}
 
-  &:hover {
-    color: var(--color-hover);
+.secTtl {
+  margin-bottom: 2rem;
+
+  & > .en {
+    font-size: 2.4rem;
+    font-weight: bold;
+    line-height: 1;
+  }
+
+  & > .ja {
+    margin-top: .4em;
+    font-size: 1.2rem;
   }
 }
-
 
 .newsList {
-  display: grid;
-  grid-template-rows: 1fr;
-  grid-template-columns: repeat(4, 1fr);
-  gap: var(--bs);
-  list-style-type: none;
+  list-style: none;
 
-  @media(--mobile) {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  
-  & .item {
-    display: contents;
+  & > .item {
+    border-bottom: 1px solid rgb(0 0 0 / 10%);
 
     & > a {
-      display: grid;
-      grid-template-rows: subgrid;
-      grid-row: span 3;
-      gap: calc(var(--bs) *.5);
-      align-items: start;
-      height: 100%;
+      display: flex;
+      gap: 0 1.5em;
+      align-items: baseline;
+      padding: 1.2em 0;
+      color: inherit;
       text-decoration: none;
-      background-color: #fff;
-      box-shadow: 0 0 12px color-mix(in srgb, #000 5%, transparent);
-      transition: box-shadow .25s;
-
-      & .thumbnail {
-        place-items: center;
-        aspect-ratio: 16 / 9;
-        overflow: hidden;
-
-        & img {
-          width: 100%;
-          min-height: 100px;
-          aspect-ratio: 16 / 9;
-          object-fit: cover;
-          transition: scale .25s;
-        }
-      }
-
-      & p {
-        padding: 0 calc(var(--bs) *.5);
-        line-height: 1.6;
-      }
-
-      & time {
-        align-self: flex-end;
-        padding-top: calc(var(--bs) *.5);
-        padding-right: calc(var(--bs) *.5);
-        padding-bottom: calc(var(--bs) *.5);
-        font-family: Oswald, sans-serif;
-        font-size: 2rem;
-        font-weight: bold;
-        line-height: 1;
-        text-align: right;
-        font-display: swap;
-      }
-
-      @media(--mobile) {
-        & p, & time {
-          font-size: smaller;
-        }
-      }
+      transition: opacity .3s;
 
       &:hover {
-        color: var(--color-hover);
-        box-shadow: none;
-
-        & .thumbnail {
-          & img {
-            scale: 1.05;
-          }
-        }
+        opacity: .6;
       }
     }
   }
+}
+
+.date {
+  flex-shrink: 0;
+  font-size: 1.2rem;
+}
+
+.title {
+  font-size: 1.4rem;
+  line-height: 1.6;
+}
+
+.empty {
+  padding: 2em 0;
+  text-align: center;
+}
+
+.Pagination {
+  margin-top: 3rem;
 }
 </style>

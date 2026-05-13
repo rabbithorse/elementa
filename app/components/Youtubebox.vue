@@ -3,7 +3,7 @@
   <div class="Youtubebox">
     <button ref="openBtn" class="toggleBtn" aria-label="動画を再生する" @click="playMovie(true)">
       <i class="fal fa-play-circle" />
-      <NuxtImg v-if="!thumbFlag" :src="`https://img.youtube.com/vi/${videoid}/maxresdefault.jpg`" alt="動画サムネイル" />
+      <img v-if="!thumbFlag" :src="`https://img.youtube.com/vi/${videoid}/maxresdefault.jpg`" alt="動画サムネイル" />
       <NuxtImg v-else :src="thumb" alt="動画サムネイル" format="webp" />
     </button>
 

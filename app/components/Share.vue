@@ -46,7 +46,7 @@ else {
 }
 
 li {
-  > a {
+  & > a {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -61,12 +61,12 @@ li {
     box-shadow: 0 0.1em 0.2em var(--color-overlay-dark);
     transition: all .3s;
 
-    > .fa-brands {
+    & > .fa-brands {
       margin-right: .5em;
       font-size: 1.5em;
     }
 
-    > .fa-arrow-right {
+    & > .fa-arrow-right {
       padding-top: 0.2em;
       margin-left: .8em;
       font-size: .85em;
@@ -78,14 +78,14 @@ li {
   }
 
   &.twitter {
-    a:hover {
+    & a:hover {
       color: #fff;
       background-color: var(--color-twitter);
     }
   }
 
   &.youtube {
-    a:hover {
+    & a:hover {
       color: #fff;
       background-color: var(--color-youtube);
     }

@@ -1,21 +1,30 @@
 <template>
   <footer class="Corpfooter">
-    <div class="brands">
-      <div class="logo">
-        <NuxtImg src="common/logo-corp_white.svg" alt="Happy Elements株式会社 Cacalia Studio" />
-      </div>
+
+    <div class="sns">
+      <NuxtLink to="https://x.com/" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-x-twitter"></i></NuxtLink>
+      <NuxtLink to="https://www.instagram.com/" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-instagram"></i></NuxtLink>
     </div>
 
     <div class="info">
       <ul class="links">
-        <li><NuxtLink target="_blank" to="https://www.happyelements.co.jp">運営会社</NuxtLink></li>
-        <li><NuxtLink target="_blank" to="https://www.happyelements.co.jp/privacy-policy/">プライバシーポリシー</NuxtLink></li>
-        <li><NuxtLink target="_blank" to="https://www.happyelements.co.jp/contents-guideline/">コンテンツ利用ガイドライン</NuxtLink></li>
+        <li><NuxtLink target="_blank" to="#">サイト利用規約</NuxtLink></li>
+        <li><NuxtLink target="_blank" to="/privacy-policy/">プライバシーポリシー</NuxtLink></li>
+        <li><NuxtLink target="_blank" to="/contents-guideline/">コンテンツ利用ガイドライン</NuxtLink></li>
       </ul>
-      <address class="copyright">© Happy Elements K.K</address>
+      <address class="copyright">©Elementa K.K.</address>
     </div>
   </footer>
 </template>
+
+<script setup lang="ts">
+interface Props {
+  publish?: string
+}
+const Props = withDefaults(defineProps<Props>(), {
+  publish: '',
+})
+</script>
 
 <style scoped>
 .Corpfooter {
@@ -29,18 +38,18 @@
   font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', YuGothic, 'ヒラギノ角ゴ ProN W3', "Hiragino Kaku Gothic ProN", Arial, 'メイリオ', Meiryo, sans-serif;
   background-color: #101010;
 
-  * {
+  & * {
     font-size: 1.6rem;
     font-feature-settings: 'palt' 1;
     line-height: 1.8;
     letter-spacing: 0.1em;
   }
 
-  img {
+  & img {
     position: relative;
   }
 
-  a {
+  & a {
     color: #fff !important;
     text-decoration: 1px #fff !important;
   }
@@ -52,14 +61,14 @@
     padding: 30px 30px 40px;
     background-color: #101010;
 
-    * {
+    & * {
       font-size: 1.6rem;
       font-feature-settings: 'palt' 1;
       line-height: 1.8;
       letter-spacing: 0.1em;
     }
 
-    img {
+    & img {
       position: relative;
     }
   }
@@ -71,13 +80,13 @@
   margin: 0 auto;
   text-align: center;
 
-  > .logo {
+  & > .logo {
     width: 83%;
     max-width: 300px;
     margin: 0 auto 40px;
     text-align: center;
 
-    > img {
+    & > img {
       width: auto;
       max-width: 100%;
       height: auto;
@@ -91,11 +100,11 @@
     margin: 0 auto;
     text-align: center;
 
-    > .logo {
+    & > .logo {
       margin: 0 auto 40px;
       text-align: center;
 
-      > img {
+      & > img {
         max-width: 100%;
         height: auto;
       }
@@ -109,19 +118,19 @@
   align-items: baseline;
   justify-content: space-between;
 
-  > .links {
+  & > .links {
     display: flex;
     flex-direction: row;
     list-style: none;
 
-    li {
+    & li {
       width: auto;
       padding-right: 1em;
       margin: 0;
       border-bottom: none;
     }
 
-    a {
+    & a {
       display: inline;
       padding: 0;
       font-size: 12px;
@@ -132,7 +141,7 @@
     }
   }
 
-  > .copyright {
+  & > .copyright {
     padding-top: 0;
     font-size: 12px;
     font-style: normal;
@@ -144,20 +153,20 @@
     flex-direction: column;
     justify-content: center;
 
-    > .links {
+    & > .links {
       flex-direction: column;
       justify-content: center;
       width: 100%;
       list-style: none;
 
-      > li {
+      & > li {
         display: block;
         width: 90%;
         padding-right: 0;
         margin: 10px auto;
         border-bottom: solid 1px #505050;
 
-        > a {
+        & > a {
           display: block;
           width: 100%;
           height: 100%;
@@ -172,7 +181,7 @@
       }
     }
 
-    > .copyright {
+    & > .copyright {
       display: block;
       width: 100%;
       padding-top: 2em;

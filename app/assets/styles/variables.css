@@ -11,27 +11,20 @@
   --color-youtube          : #FF0000;
   --color-facebook         : #1877F2;
   --color-chouchou         : #151e5d;
+
+  --color-base              : #4a8fbe;
   
   /* footer 背景色とテキスト（各アプリ、Share、toTop共通） */
   --color-fotter-text      : #000;
   --color-fotter-background: #fff;
-  
-  /* boys タグカラー */
-  --color-basic            : #006eeb;
-  --color-music            : #ff8700;
-
-  /* boys フッターカラー */
-  --color-boys-gray        : #e2ebeb;
-  --color-boys-yellow      : #fff100;
-  --color-boys-navy        : #0c1a5d;
 
    /* ユーティリティ */
   --color-overlay-light    : rgb(255 255 255 / 80%);
   --color-overlay-dark     : rgb(0 0 0 / 80%);
   
-/* スクロールバー */
-  --color-scrollbar-thumb  : #006eeb;
-  --color-scrollbar-track  : #ff8700;
+  /* スクロールバー */
+  --color-scrollbar-thumb  : var(--color-base);
+  --color-scrollbar-track  : #fff;
 
   /* z-index -------------------------------------- */
   

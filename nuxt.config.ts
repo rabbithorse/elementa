@@ -33,7 +33,6 @@ export default defineNuxtConfig({
   },
   app: {
     pageTransition: { name: 'page', mode: 'out-in' },
-    // baseURL: '/hoge/',
   },
   css: [
     'ress/dist/ress.min.css',
@@ -67,33 +66,36 @@ export default defineNuxtConfig({
   },
   modules: [
     '@nuxt/eslint',
-    // '@nuxt/image',
-    // '@nuxtjs/sitemap',
+    '@nuxt/image',
+    '@nuxtjs/sitemap',
     '@vueuse/nuxt',
     'nuxt-gtag',
     'nuxt-microcms-module', // microCMSを使う際に有効化
-    // 'nuxt-swiper',
-    // 'nuxt3-lenis',
+    'nuxt-splide',
+    'nuxt-lenis',
   ],
   eslint: {
     config: {
       stylistic: true,
     },
   },
-  // image: {
-  //   dir: 'public/images',
-  //   quality: 80,
-  // },
+  image: {
+    dir: '../public/images',
+    quality: 80,
+  },
+  splide: {
+    theme: 'default',
+  },
   microCMS: {  // microCMSを使う際に .env を用意して有効化
     serviceDomain: process.env.SERVICE_DOMAIN,
     apiKey: process.env.API_KEY,
     target: 'server',
   },
-  // gtag: {
-  //   id: 'G-XXXXXXXXXXXX',
-  // },
-  // site: {
-  //   url: 'https://XXXXXXXX', // globalSiteUrl と一致させる
-  //   name: 'XXXXXXXX', // globalSiteName と一致させる
-  // },
+  gtag: {
+    id: 'G-CZ166WZQTV',
+  },
+  site: {
+    url: 'https://elementa.co.jp', // globalSiteUrl と一致させる
+    name: 'Elementa', // globalSiteName と一致させる
+  },
 })

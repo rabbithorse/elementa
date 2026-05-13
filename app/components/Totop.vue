@@ -27,9 +27,9 @@ button {
   background-color: #101010;
   border: none;
 
-  > i { display: block; }
+  & > i { display: block; }
 
-  > span {
+  & > span {
     font-size: .85em;
   }
 }

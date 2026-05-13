@@ -86,13 +86,13 @@ onKeyStroke('Escape', (e) => {
   margin: 3em auto;
   text-align: center;
 
-  button {
+  & button {
     display: inline-block;
     padding: .5em 1em;
     color: #fff;
     background-color: #000;
 
-    span {
+    & span {
       font-size: 2rem;
     }
   }
@@ -158,7 +158,7 @@ onKeyStroke('Escape', (e) => {
       transition: all .3s;
       transform: translateX(-50%);
 
-      i { font-size: 3rem; }
+      & i { font-size: 3rem; }
 
       &:focus { outline: none; }
 
