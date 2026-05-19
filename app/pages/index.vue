@@ -11,21 +11,21 @@
 
         <ul class="newsList">
           <li class="headline">
-            <time datetime="2024-06-01">2024.06.01</time>
+            <time datetime="2026-06-01">2026.06.01</time>
             <p class="title">新しいプロジェクトを開始しました。</p>
           </li>
           <li class="headline">
-            <time datetime="2024-06-01">2024.06.01</time>
+            <time datetime="2026-06-01">2026.06.01</time>
             <p class="title">新しいプロジェクトを開始しました。</p>
           </li>
           <li class="headline">
-            <time datetime="2024-06-01">2024.06.01</time>
+            <time datetime="2026-12-31">2026.12.31</time>
             <p class="title">新しいプロジェクトを開始しました。</p>
           </li>
         </ul>
 
         <div class="linkArea">
-          <NuxtLink to="/news" class="link -en">MORE<i class="fas fa-arrow-right"></i></NuxtLink>
+          <NuxtLink to="/news" class="defLink -en">MORE<i class="fas fa-arrow-right"></i></NuxtLink>
         </div>
       </div>
     </section>
@@ -33,18 +33,22 @@
     <section class="company">
       <div class="inner">
         <div class="imgArea">
-          <NuxtImg src="/top/pic-company_01.png" alt="" format="webp" class="img -01" />
-          <NuxtImg src="/top/pic-company_02.png" alt="" format="webp" class="img -02" />
+          <div class="img -i01">
+            <NuxtImg src="/top/pic-company_01.png" alt="" format="webp" />
+          </div>
+          <div class="img -i02">
+            <NuxtImg src="/top/pic-company_02.png" alt="" format="webp" />
+          </div>
         </div>
         <div class="textArea">
           <hgroup class="secTtl">
             <h2 class="en">COMPANY</h2>
             <p class="ja">会社情報</p>
-          </hgroup>   
+          </hgroup>
           <p class="text">素晴らしいゲーム体験は<br>独創性と<br>最先端技術の融合によって<br>生まれる。</p>
           <p class="text-en">We believe that exceptional games are born where creativity meets technology.</p>
           <div class="linkArea">
-            <NuxtLink to="/company" class="link -ja">Elementaについて<i class="fas fa-arrow-right"></i></NuxtLink>
+            <NuxtLink to="/company" class="defLink -ja">Elementaについて<i class="fas fa-arrow-right"></i></NuxtLink>
           </div>
         </div>
       </div>
@@ -60,7 +64,7 @@
           <p class="text">素晴らしいゲームは<br>情熱を持つ人から<br>生まれる。</p>
           <p class="text-en">We believe every great game starts  with passionate people.</p>
           <div class="linkArea">
-            <NuxtLink to="/recruit" class="link -ja">採用情報を見る<i class="fas fa-arrow-right"></i></NuxtLink>
+            <NuxtLink to="/recruit" class="defLink -ja">採用情報を見る<i class="fas fa-arrow-right"></i></NuxtLink>
           </div>
         </div>
       </div>
@@ -75,15 +79,166 @@
 .wrapper {
   position: relative;
   width: 100%;
+
+  & .secTtl {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2em;
+    align-items: baseline;
+    font-size: clamp(1.4rem, pxToVw(20,1400), 2rem);
+    font-weight: bold;
+    line-height: 1.2;
+    color: var(--color-base);
+
+    & > .en {
+      font-size: 2em;
+      font-weight: bold;
+    }
+
+    & > .ja {
+      font-size: 1em;
+    }
+  }
 }
 
 .news {
-  padding: 0 1em;
-  margin: 0 auto 2em;
+  padding: 0 2em;
+  margin: 3em auto 0;
 
   & > .inner {
+    position: relative;
     max-width: 108rem;
     margin: 0 auto;
+  }
+
+  & .newsList {
+    width: 100%;
+    margin-top: 1em;
+    font-size: clamp(1.4rem, pxToVw(24,1400), 2.4rem);
+    list-style-type: none;
+    border-top: .1rem solid var(--color-hr_light);
+
+    & > .headline {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2em;
+      padding: 1.5em 0 1.3em;
+      line-height: 1.2;
+      border-bottom: .1rem solid var(--color-hr_light);
+
+      & > time {
+        width: 6.5em;
+        font-weight: bold;
+      }
+
+      & > .title {
+        flex: 1;
+        font-weight: 600;
+      }
+    }
+  }
+
+  & .linkArea {
+    position: absolute;
+    top: .5em;
+    right: 0;
+  }
+}
+
+.company {
+  padding: 0 2em;
+  margin: 8em auto 0;
+
+  & > .inner {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2em 3em;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 130rem;
+    margin: 0 auto;
+    background: var(--color-bg_light);
+    border-radius: .9em;
+  }
+
+  & .imgArea {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    width: pxToPer(625,1300);
+    transform: translateY(-10%);
+
+    & img {
+      width: 100%;
+    }
+
+    & > .img.-i01 {
+      align-self: flex-end;
+      width: pxToPer(350,625);
+    }
+
+    & > .img.-i02 {
+      align-self: flex-start;
+      width: pxToPer(515,625);
+    }
+  }
+
+  & .textArea {
+    width: pxToPer(450,1300);
+
+    & > .text {
+      margin: 1em auto .5em;
+      font-size: clamp(1.4rem, pxToVw(30,1400), 3rem);
+      font-weight: bold;
+    }
+
+    & > .text-en {
+      margin-top: 1em;
+      font-size: clamp(1rem, pxToVw(16,1400), 1.6rem);
+      color: var(--color-base);
+    }
+
+    & > .linkArea {
+      margin-top: 2em;
+      text-align: right;
+    }
+  }
+}
+
+.recruit {
+  margin: 4em auto 0;
+  background: url('/images/top/bg-recruit.png') no-repeat center / cover;
+
+  & > .inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    max-width: 71rem;
+    padding: 4em 3em;
+    margin: 0 0 0 auto;
+    background: var(--color-opacity_light);
+  }
+
+  & .textArea {
+    & > .text {
+      margin: 1em auto .5em;
+      font-size: clamp(1.4rem, pxToVw(30,1400), 3rem);
+      font-weight: bold;
+    }
+
+    & > .text-en {
+      margin-top: 1em;
+      font-size: clamp(1rem, pxToVw(16,1400), 1.6rem);
+      color: var(--color-base);
+    }
+
+    & > .linkArea {
+      margin-top: 2em;
+      text-align: right;
+    }
   }
 }
 </style>

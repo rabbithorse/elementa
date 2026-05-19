@@ -52,10 +52,62 @@ body {
 }
 
 img {
-  width: 100%;
+  width: auto;
   max-width: 100%;
-  height: 100%;
+  height: auto;
   max-height: 100%;
   vertical-align: bottom;
   object-fit: contain;
+}
+
+.defLink {
+  display: inline-flex;
+  gap: .5em;
+  align-items: center;
+  font-size: clamp(1.2rem, pxToVw(22,1400), 2.2rem);
+  font-weight: 600;
+  line-height: 1;
+  color: #000;
+  text-decoration: none;
+
+  &.-ja {
+    gap: 1em;
+    font-size: .9em;
+    text-decoration: underline;
+  }
+
+  &.-en {
+    gap: .5em;
+    font-weight: bold;
+  }
+
+  & > i {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2em;
+    height: 2em;
+    font-size: clamp(1.2rem, pxToVw(30,1400), 3rem);
+    color: #fff;
+    background-color: #000;
+    border-radius: .26em;
+  }
+}
+
+.pageTtl {
+  font-size: clamp(1.4rem, pxToVw(20,1400), 2rem);
+  font-weight: bold;
+  line-height: 1.2;
+  color: var(--color-base);
+  text-align: center;
+
+  & > .en {
+    font-size: 2.5em;
+    font-weight: bold;
+  }
+
+  & > .ja {
+    margin-top: .5em;
+    font-size: 1em;
+  }
 }

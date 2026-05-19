@@ -3,12 +3,8 @@
     <Opening />
     <NavsDrawer />
     <lenis :options="LenisOptions">
-      <div class="container">
+      <div class="container" :class="isTop ? '-top' : '-page'">
         <NuxtPage />
-        <AppsBoysFooter />
-        <AppsChouchouFooter />
-        <Share />
-        <Totop />
       </div>
     </lenis>
     <Corpfooter />
@@ -16,11 +12,14 @@
 </template>
 
 <script setup lang="ts">
+const route = useRoute()
+const isTop = computed(() => route.path === '/')
+
 const typekitId = 'rbi5ujp' // サイトごとに書き換えるポイント ①
 const fontawesomeId = '6cc7bb76fa' // サイトごとに書き換えるポイント ②
-const globalSiteName = 'XXXXXXXX' // サイトごとに書き換えるポイント ③
-const twitterId = '@XXXXXXXX' // サイトごとに書き換えるポイント ④
-const hostUrl = 'http://localhost:3000' // サイトごとに書き換えるポイント ⑤ ※開発時は localhost:3000 になる
+const globalSiteName = 'Elementa' // サイトごとに書き換えるポイント ③
+const twitterId = '@elementa' // サイトごとに書き換えるポイント ④
+const hostUrl = 'https://elementa.co.jp' // サイトごとに書き換えるポイント ⑤ ※開発時は localhost:3000 になる
 
 const globalSiteUrl = hostUrl
 const globalOgp = hostUrl + '/images/ogps/ogp.png'
@@ -90,9 +89,18 @@ const LenisOptions = {
 
 .container {
   width: 100%;
-  max-width: 75rem;
   margin: 0 auto;
-  overflow: hidden;
-  background-color: #f5f5f5;
+  background-color: #fff;
+
+  &.-page {
+    padding-top: 5em;
+    font-size: clamp(1.2rem, pxToVw(24,1400), 2.4rem);
+  }
+
+  @media (--mobile) {
+    &.-page {
+      padding-top: 0;
+    }
+  }
 }
 </style>

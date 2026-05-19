@@ -2,6 +2,7 @@
   <footer class="Corpfooter">
 
     <div class="sns">
+      <p class="text">SNS</p>
       <NuxtLink to="https://x.com/" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-x-twitter"></i></NuxtLink>
       <NuxtLink to="https://www.instagram.com/" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-instagram"></i></NuxtLink>
     </div>
@@ -28,22 +29,21 @@ const Props = withDefaults(defineProps<Props>(), {
 
 <style scoped>
 .Corpfooter {
-  --height-footer-pc: 16.8rem;
-  --height-footer-sp: auto; /* 33.725rem; */
-
   box-sizing: border-box;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1em;
+  align-items: last baseline;
+  justify-content: space-between;
   width: 100%;
-  height: var(--height-footer-pc);
-  padding: 30px 30px 40px;
+  padding: 1.5em 1em 1em;
   font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', YuGothic, 'ヒラギノ角ゴ ProN W3', "Hiragino Kaku Gothic ProN", Arial, 'メイリオ', Meiryo, sans-serif;
-  background-color: #101010;
-
-  & * {
-    font-size: 1.6rem;
-    font-feature-settings: 'palt' 1;
-    line-height: 1.8;
-    letter-spacing: 0.1em;
-  }
+  font-size: clamp(1.2rem, pxToVw(20,1400), 2rem);
+  font-feature-settings: 'palt' 1;
+  line-height: 1.8;
+  color: var(--color-fotter-text);
+  letter-spacing: 0.1em;
+  background-color: var(--color-fotter-background);
 
   & img {
     position: relative;
@@ -54,69 +54,38 @@ const Props = withDefaults(defineProps<Props>(), {
     text-decoration: 1px #fff !important;
   }
 
-  @media (--sp) {
-    box-sizing: border-box;
-    width: 100%;
-    height: var(--height-footer-sp);
-    padding: 30px 30px 40px;
-    background-color: #101010;
-
-    & * {
-      font-size: 1.6rem;
-      font-feature-settings: 'palt' 1;
-      line-height: 1.8;
-      letter-spacing: 0.1em;
-    }
-
-    & img {
-      position: relative;
-    }
+  @media screen and (width <= 600px) {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5em 1em 2em;
+    text-align: center;
   }
 }
 
-.brands {
-  width: 100%;
-  max-width: 1000px;
-  margin: 0 auto;
-  text-align: center;
+.sns {
+  display: flex;
+  gap: 1em;
+  align-items: center;
+  font-size: clamp(1.2rem, pxToVw(20,1400), 2rem);
 
-  & > .logo {
-    width: 83%;
-    max-width: 300px;
-    margin: 0 auto 40px;
-    text-align: center;
-
-    & > img {
-      width: auto;
-      max-width: 100%;
-      height: auto;
-      max-height: 100%;
-    }
+  & .text {
+    font-size: 1em;
+    font-weight: bold;
+    color: #fff;
   }
 
-  @media (--sp) {
-    width: 100%;
-    max-width: 1000px;
-    margin: 0 auto;
-    text-align: center;
-
-    & > .logo {
-      margin: 0 auto 40px;
-      text-align: center;
-
-      & > img {
-        max-width: 100%;
-        height: auto;
-      }
-    }
+  & a {
+    font-size: 2em;
+    color: #fff;
+    text-decoration: none;
   }
 }
 
 .info {
-  display: flex;
-  flex-flow: row wrap;
-  align-items: baseline;
-  justify-content: space-between;
+  display: block;
+  line-height: 1;
+  text-align: right;
 
   & > .links {
     display: flex;
@@ -125,31 +94,72 @@ const Props = withDefaults(defineProps<Props>(), {
 
     & li {
       width: auto;
-      padding-right: 1em;
       margin: 0;
       border-bottom: none;
+
+      & + li {
+        &:before {
+          display: inline-block;
+          margin: 0 1em;
+          color: #fff;
+          content: '|';
+        }
+      }
     }
 
     & a {
       display: inline;
       padding: 0;
-      font-size: 12px;
-      font-style: normal;
-      font-weight: normal;
+      font-weight: bold;
       color: #fff;
-      text-decoration: underline !important;
+      text-decoration: none;
     }
   }
 
   & > .copyright {
-    padding-top: 0;
-    font-size: 12px;
+    margin-top: .5em;
     font-style: normal;
     font-weight: bold;
     color: #fff;
   }
 
-  @media (--sp) {
+  @media screen and (width <= 600px) {
+    width: 100%;
+    max-width: 25em;
+    text-align: center;
+
+    & > .links {
+      flex-direction: column;
+      justify-content: center;
+      width: 100%;
+      list-style: none;
+
+      & > li {
+        display: block;
+        width: 100%;
+        border-bottom: solid 1px var(--color-hr_light);
+
+        & + li:before {
+          display: none;
+        }
+
+        & > a {
+          display: block;
+          width: 100%;
+          height: 100%;
+          padding: 1.5em 0;
+          color: #fff;
+          text-align: center;
+        }
+      }
+    }
+
+    & > .copyright {
+      margin-top: 2em;
+    }
+  }
+
+  /* @media (--sp) {
     flex-direction: column;
     justify-content: center;
 
@@ -191,6 +201,6 @@ const Props = withDefaults(defineProps<Props>(), {
       color: #fff;
       text-align: center;
     }
-  }
+  } */
 }
 </style>
