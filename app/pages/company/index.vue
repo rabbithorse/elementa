@@ -45,6 +45,11 @@
 </template>
 
 <script setup lang="ts">
+useSeoMeta({
+  title: `会社情報 | ${inject('globalSiteName')}`,
+  ogTitle: `会社情報 | ${inject('globalSiteName')}`,
+  ogUrl: `${inject('globalSiteUrl')}/company/`,
+})
 </script>
 
 <style scoped>

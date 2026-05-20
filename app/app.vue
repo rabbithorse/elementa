@@ -16,10 +16,11 @@ const route = useRoute()
 const isTop = computed(() => route.path === '/')
 
 const typekitId = 'rbi5ujp' // サイトごとに書き換えるポイント ①
-const fontawesomeId = '6cc7bb76fa' // サイトごとに書き換えるポイント ②
+const fontawesomeId = '8a6fd9fb88' // サイトごとに書き換えるポイント ②
 const globalSiteName = 'Elementa' // サイトごとに書き換えるポイント ③
 const twitterId = '@elementa' // サイトごとに書き換えるポイント ④
 const hostUrl = 'https://elementa.co.jp' // サイトごとに書き換えるポイント ⑤ ※開発時は localhost:3000 になる
+const description = 'サイト説明文'
 
 const globalSiteUrl = hostUrl
 const globalOgp = hostUrl + '/images/ogps/ogp.png'
@@ -37,8 +38,8 @@ useSeoMeta({
   title: globalSiteName, // 個別のページは useSeoMeta で上書き
   ogTitle: globalSiteName, // 個別のページは useSeoMeta で上書き
   ogSiteName: globalSiteName,
-  description: 'サイト説明文',
-  ogDescription: 'サイト説明文',
+  description: description,
+  ogDescription: description,
   ogImage: globalOgp,
   twitterCard: 'summary_large_image',
   twitterSite: twitterId,

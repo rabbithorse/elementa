@@ -2,5 +2,5 @@
 import { useDateFormat } from '@vueuse/core'
 
 export const date = (date: Date) => {
-  return useDateFormat(date, 'YYYY年MM月DD日').value
+  return useDateFormat(date, 'YYYY.MM.DD').value
 }

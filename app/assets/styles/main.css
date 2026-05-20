@@ -70,6 +70,10 @@ img {
   color: #000;
   text-decoration: none;
 
+  @media (--sp) {
+    font-size: clamp(1.2rem, pxToVw(18,450), 2.2rem);
+  }
+
   &.-ja {
     gap: 1em;
     font-size: .9em;
@@ -93,6 +97,38 @@ img {
     border-radius: .26em;
   }
 }
+
+.defLinkBtn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  min-height: 4.5em;
+  padding: .8em 3.2em .8em 1.2em;
+  font-size: .9em;
+  font-size: clamp(1.6rem, pxToVw(20,1400), 2rem);
+  line-height: 1.3;
+  color: #fff;
+  text-decoration: none;
+  background-color: #000;
+  border-radius: .4em;
+
+  &:before {
+    position: absolute;
+    top: 50%;
+    right: 1em;
+    margin-right: .5em;
+    font-family: 'Font Awesome 7 Pro', sans-serif;
+    font-weight: 900;
+    content: '\f105';
+    transform: translateY(-50%);
+  }
+
+  @media (--sp) {
+    font-size: clamp(1.2rem, pxToVw(16,450), 2rem);
+  }
+}
+
 
 .pageTtl {
   font-size: clamp(1.4rem, pxToVw(20,1400), 2rem);

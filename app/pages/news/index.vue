@@ -2,7 +2,7 @@
   <div class="wrapper">
     <section class="news">
       <div class="inner">
-        <hgroup class="secTtl">
+        <hgroup class="pageTtl">
           <h1 class="en">NEWS</h1>
           <p class="ja">お知らせ</p>
         </hgroup>
@@ -63,67 +63,74 @@ const { data: news } = await useAsyncData(
 .wrapper {
   position: relative;
   width: 100%;
+  padding: 3em 1em 8em;
+
+  @media (--sp) {
+    padding: 2em 1em 5em;
+  }
 }
 
 .inner {
-  width: min(90%, 1200px);
-  padding: 4rem 0;
+  width: 100%;
+  max-width: 96rem;
+  min-height: 80vh;
   margin: 0 auto;
 }
 
-.secTtl {
-  margin-bottom: 2rem;
-
-  & > .en {
-    font-size: 2.4rem;
-    font-weight: bold;
-    line-height: 1;
-  }
-
-  & > .ja {
-    margin-top: .4em;
-    font-size: 1.2rem;
-  }
-}
-
 .newsList {
-  list-style: none;
+  width: 100%;
+  margin-top: 2em;
+  font-size: clamp(1.4rem, pxToVw(24,1400), 2.4rem);
+  list-style-type: none;
+  border-top: .1rem solid var(--color-hr_light);
 
   & > .item {
-    border-bottom: 1px solid rgb(0 0 0 / 10%);
+    border-bottom: .1rem solid var(--color-hr_light);
 
     & > a {
       display: flex;
-      gap: 0 1.5em;
-      align-items: baseline;
-      padding: 1.2em 0;
+      flex-wrap: wrap;
+      gap: 2em;
+      padding: 1.5em 0 1.3em;
+      line-height: 1.2;
       color: inherit;
       text-decoration: none;
-      transition: opacity .3s;
+      transition: color .25s;
 
       &:hover {
-        opacity: .6;
+        color: var(--color-base);
+      }
+
+      @media (--mobile) {
+        gap: .5em 1em;
+        padding: 1.2em 0 1em;
       }
     }
   }
 }
 
 .date {
-  flex-shrink: 0;
-  font-size: 1.2rem;
+  width: 6.5em;
+  font-weight: bold;
 }
 
 .title {
-  font-size: 1.4rem;
-  line-height: 1.6;
+  flex: 1;
+  font-weight: 600;
 }
 
 .empty {
-  padding: 2em 0;
+  padding: 4em 0;
+  font-size: 1em;
+  color: var(--color-hr_light);
   text-align: center;
 }
 
 .Pagination {
-  margin-top: 3rem;
+  margin-top: 4em;
+
+  @media (--sp) {
+    margin-top: 2.5em;
+  }
 }
 </style>

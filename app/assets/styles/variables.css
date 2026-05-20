@@ -16,6 +16,8 @@
   --color-bg_light          : #f2f9fb;
   --color-hr_light          : #d5d5d5;
   --color-opacity_light     : color-mix(in srgb, #f2f9fb 80%, transparent);
+
+  --color-example_text       : #8f8f8f;
   
   /* footer 背景色とテキスト（各アプリ、Share、toTop共通） */
   --color-fotter-text      : #fff;
