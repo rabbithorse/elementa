@@ -100,7 +100,7 @@ const LenisOptions = {
 
   @media (--mobile) {
     &.-page {
-      padding-top: 0;
+      padding-top: 3em;
     }
   }
 }

@@ -13,6 +13,7 @@
     "lint:style:fix": "stylelint --config stylelint.config.mjs \"**/*.{css,vue}\" --fix"
   },
   "dependencies": {
+    "@formkit/nuxt": "^2.0.0",
     "@nuxt/image": "^1.10.0",
     "@nuxtjs/sitemap": "^7.4.7",
     "@splidejs/splide-extension-auto-scroll": "^0.5.3",

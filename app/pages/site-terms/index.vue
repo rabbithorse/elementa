@@ -2,8 +2,8 @@
   <div class="wrapper">
     <div class="inner">
       <hgroup class="pageTtl">
-        <h1 class="en">CONTENTS GUIDELINE</h1>
-        <p class="ja">コンテンツ利用ガイドライン</p>
+        <h1 class="en">TERMS OF SERVICE</h1>
+        <p class="ja">サイト利用規約</p>
       </hgroup>
 
       <article v-if="processedBody" class="body" v-html="processedBody" />
@@ -18,7 +18,7 @@ import type { Documents } from '~~/types/Documents'
 const post = ref<Documents>()
 const processedBody = ref<string>('')
 
-const contentId: string = 'contents-guideline'
+const contentId: string = 'site-terms'
 const { data, error } = await useMicroCMSGetListDetail<Documents>({
 endpoint: 'documents',
   contentId,
@@ -75,9 +75,9 @@ onMounted(() => {
 })
 
 useSeoMeta({
-  title: `コンテンツ利用ガイドライン | ${inject('globalSiteName')}`,
-  ogTitle: `コンテンツ利用ガイドライン | ${inject('globalSiteName')}`,
-  ogUrl: `${inject('globalSiteUrl')}/contents-guideline/`,
+  title: `サイト利用規約 | ${inject('globalSiteName')}`,
+  ogTitle: `サイト利用規約 | ${inject('globalSiteName')}`,
+  ogUrl: `${inject('globalSiteUrl')}/site-terms/`,
 })
 </script>
 

@@ -57,6 +57,11 @@ const { data: news } = await useAsyncData(
     watch: [() => route.params.p],
   },
 )
+useSeoMeta({
+  title: `お知らせ | ${inject('globalSiteName')}`,
+  ogTitle: `お知らせ | ${inject('globalSiteName')}`,
+  ogUrl: `${inject('globalSiteUrl')}/news/`,
+})
 </script>
 
 <style scoped>

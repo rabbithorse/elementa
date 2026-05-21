@@ -9,9 +9,9 @@
 
     <div class="info">
       <ul class="links">
-        <li><NuxtLink target="_blank" to="#">サイト利用規約</NuxtLink></li>
-        <li><NuxtLink target="_blank" to="/privacy-policy/">プライバシーポリシー</NuxtLink></li>
-        <li><NuxtLink target="_blank" to="/contents-guideline/">コンテンツ利用ガイドライン</NuxtLink></li>
+        <li><NuxtLink to="/site-terms/">サイト利用規約</NuxtLink></li>
+        <li><NuxtLink to="/privacy-policy/">プライバシーポリシー</NuxtLink></li>
+        <li><NuxtLink to="/contents-guideline/">コンテンツ利用ガイドライン</NuxtLink></li>
       </ul>
       <address class="copyright">©Elementa K.K.</address>
     </div>

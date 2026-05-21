@@ -69,6 +69,7 @@ export default defineNuxtConfig({
     '@nuxt/image',
     '@nuxtjs/sitemap',
     '@vueuse/nuxt',
+    '@formkit/nuxt',
     'nuxt-gtag',
     'nuxt-microcms-module', // microCMSを使う際に有効化
     'nuxt-splide',
@@ -78,6 +79,10 @@ export default defineNuxtConfig({
     config: {
       stylistic: true,
     },
+  },
+  formkit: {
+    autoImport: true,
+    configFile: './formkit.config.ts',
   },
   image: {
     dir: '../public/images',

@@ -10,13 +10,13 @@
         <h2 class="ttl"><i class="fa-regular fa-building icon"></i>法人のお客様</h2>
         <ul class="Linklist">
           <li class="item">
-            <NuxtLink to="/contact/form" class="defLinkBtn">商品化・弊社著作物のライセンスについて</NuxtLink>
+            <NuxtLink to="/contact/form-business_01" class="defLinkBtn">商品化・弊社著作物IPライセンスについて</NuxtLink>
           </li>
           <li class="item">
-            <NuxtLink to="/contact/form" class="defLinkBtn">事業のご提案について</NuxtLink>
+            <NuxtLink to="/contact/form-business_02" class="defLinkBtn">事業のご提案</NuxtLink>
           </li>
           <li class="item">
-            <NuxtLink to="/contact/form" class="defLinkBtn">その他のお問い合わせ</NuxtLink>
+            <NuxtLink to="/contact/form-business_03" class="defLinkBtn">その他・総合お問い合わせ</NuxtLink>
           </li>
         </ul>
       </div>
@@ -25,13 +25,13 @@
         <h2 class="ttl"><i class="fa-regular fa-person-simple icon"></i>個人のお客様</h2>
         <ul class="Linklist">
           <li class="item">
-            <NuxtLink to="/contact/form" class="defLinkBtn">各種ゲーム・サービスについて</NuxtLink>
+            <NuxtLink to="/contact/form-person_01" class="defLinkBtn">各種ゲーム・サービスについて</NuxtLink>
           </li>
           <li class="item">
-            <NuxtLink to="/contact/form" class="defLinkBtn">採用・求人へのご応募について</NuxtLink>
+            <NuxtLink to="/contact/form-person_02" class="defLinkBtn">ご意見・要望、<br>ガイドライン違反・著作権侵害情報のご提供</NuxtLink>
           </li>
           <li class="item">
-            <NuxtLink to="/contact/form" class="defLinkBtn">ご意見・要望、および<br>ガイドライン違反、著作権侵害情報のご提供</NuxtLink>
+            <NuxtLink to="/contact/form-person_03" class="defLinkBtn">採用・求人に関するお問い合わせ</NuxtLink>
           </li>
         </ul>
       </div>
@@ -40,16 +40,16 @@
     <section class="conBox">
       <div class="borderBox">
         <div class="textArea">
-          <p class="text">当社より提供しております各種ゲームコンテンツをプレイする際の配信について、ガイドラインを公開しております。<br>ガイドラインについて、個別でのご案内は行っておりませんので、あらかじめご了承ください。</p>
+          <p class="text">当社より提供しております各種ゲームコンテンツをプレイする際の実況・配信関連のガイドラインは定めらておリます。ご確認くださいますようお願い申し上げます。</p>
         </div>
-        <NuxtLink to="#" class="defLinkBtn">当社ゲームコンテンツを<br>プレイする際の配信ガイドライン</NuxtLink>
+        <NuxtLink to="#" class="defLinkBtn">ゲームの配信に関する<br>ガイドラインについて</NuxtLink>
       </div>      
     </section>
 
     <section class="conBox">
       <div class="borderBox">
         <div class="textArea">
-          <p class="text">ELEMENTA株式会社は、当社スタッフに対するカスタマーハラスメントへの対応方針を定めております。<br>お問い合わせの際には、事前にご確認くださいますようお願い申し上げます。</p>
+          <p class="text">ELEMENTA株式会社は、当社スタッフに対するカスタマーハラスメントへの対応方針を定めております、お問い合わせの際には、事前にご確認くださいますようお願い申し上げます。</p>
         </div>
         <NuxtLink to="#" class="defLinkBtn">カスタマーハラスメントへの<br>対応方針について</NuxtLink>
       </div>      
