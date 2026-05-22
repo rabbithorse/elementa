@@ -11,7 +11,7 @@
       <div class="textArea">
         <p class="catchCopy">Elementa Japanは<br>ゲームの可能性を共に再定義し<br><span>「愛される楽しさ」</span>を創り出す<br>仲間を募集しています。</p>
         <div class="linkArea">
-          <NuxtLink to="/contact/form/" class="defLink -ja">人事・採用関連お問い合わせ<i class="fas fa-arrow-right"></i></NuxtLink>
+          <NuxtLink to="/contact/form-person_03/" class="defLink -ja">人事・採用関連お問い合わせ<i class="fas fa-arrow-right"></i></NuxtLink>
         </div>
       </div>
 

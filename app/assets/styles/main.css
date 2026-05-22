@@ -34,6 +34,13 @@ body {
   & ul:not([class]) {
     padding-left: 1.5em;
   }
+
+  & a:not([class]) {
+    display: inline;
+    padding: 0 .2em;
+    color: var(--color-base);
+    text-underline-offset: .2em;
+  }
 }
 
 .dummy {
@@ -146,5 +153,39 @@ img {
   & > .ja {
     margin-top: .5em;
     font-size: 1em;
+  }
+}
+
+.notes {
+  width: 100%;
+  max-width: 80rem;
+  margin: 2em auto;
+  text-align: center;
+
+  & > p {
+    font-size: clamp(1.2rem, pxToVw(18,1400), 1.6rem);
+    line-height: 1.4;
+    word-break: auto-phrase;
+
+    &.notesText {
+      padding-left: 1em;
+      text-indent: -1em;
+
+      &:before {
+        margin-right: .2em;
+        content: '※';
+      }
+    }
+
+    & + p {
+      margin-top: 1em;
+    }
+
+    & a {
+      display: inline;
+      padding: 0 .2em;
+      color: var(--color-base);
+      text-underline-offset: .2em;
+    }
   }
 }

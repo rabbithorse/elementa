@@ -42,7 +42,7 @@
         <div class="textArea">
           <p class="text">当社より提供しております各種ゲームコンテンツをプレイする際の実況・配信関連のガイドラインは定めらておリます。ご確認くださいますようお願い申し上げます。</p>
         </div>
-        <NuxtLink to="#" class="defLinkBtn">ゲームの配信に関する<br>ガイドラインについて</NuxtLink>
+        <NuxtLink to="/streaming-guideline" class="defLinkBtn">ゲームの配信に関する<br>ガイドラインについて</NuxtLink>
       </div>      
     </section>
 
@@ -51,7 +51,7 @@
         <div class="textArea">
           <p class="text">ELEMENTA株式会社は、当社スタッフに対するカスタマーハラスメントへの対応方針を定めております、お問い合わせの際には、事前にご確認くださいますようお願い申し上げます。</p>
         </div>
-        <NuxtLink to="#" class="defLinkBtn">カスタマーハラスメントへの<br>対応方針について</NuxtLink>
+        <NuxtLink to="/customer-harassment-policy" class="defLinkBtn">カスタマーハラスメントへの<br>対応方針について</NuxtLink>
       </div>      
     </section>
 

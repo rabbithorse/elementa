@@ -180,6 +180,7 @@ const onSubmit = () => {
       & input[type='text'],
       & input[type='email'],
       & input[type='tel'],
+      & select,
       & textarea {
         width: 100%;
         padding: .8em 1em;
@@ -195,6 +196,10 @@ const onSubmit = () => {
         &:focus {
           box-shadow: 0 0 0 .2rem var(--color-base);
         }
+      }
+
+      & select {
+        cursor: pointer;
       }
 
       & textarea {
@@ -221,6 +226,7 @@ const onSubmit = () => {
       & [data-invalid='true'] input[type='text'],
       & [data-invalid='true'] input[type='email'],
       & [data-invalid='true'] input[type='tel'],
+      & [data-invalid='true'] select,
       & [data-invalid='true'] textarea {
         border-color: #e74c3c;
       }

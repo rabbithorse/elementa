@@ -9,20 +9,15 @@
           <p class="ja">お知らせ</p>
         </hgroup>
 
-        <ul class="newsList">
-          <li class="headline">
-            <time datetime="2026-06-01">2026.06.01</time>
-            <p class="title">新しいプロジェクトを開始しました。</p>
-          </li>
-          <li class="headline">
-            <time datetime="2026-06-01">2026.06.01</time>
-            <p class="title">新しいプロジェクトを開始しました。</p>
-          </li>
-          <li class="headline">
-            <time datetime="2026-12-31">2026.12.31</time>
-            <p class="title">新しいプロジェクトを開始しました。</p>
+        <ul v-if="news?.length" class="newsList">
+          <li v-for="post in news" :key="post.id" class="headline">
+            <NuxtLink :to="`/news/${post.id}`" class="link">
+              <time :datetime="String(post.publishedAt)">{{ date(post.publishedAt) }}</time>
+              <p class="title">{{ post.title }}</p>
+            </NuxtLink>
           </li>
         </ul>
+        <p v-else class="empty">お知らせはありません。</p>
 
         <div class="linkArea">
           <NuxtLink to="/news" class="defLink -en">MORE<i class="fas fa-arrow-right"></i></NuxtLink>
@@ -73,6 +68,20 @@
 </template>
 
 <script setup lang="ts">
+import type { News } from '~~/types/News'
+import { date } from '~/composables/date'
+
+const { data: news } = await useAsyncData('top-news', async () => {
+  const { data } = await useMicroCMSGetList<News>({
+    endpoint: 'news',
+    queries: {
+      limit: 3,
+      orders: '-publishedAt',
+      fields: 'id,title,publishedAt',
+    },
+  })
+  return data.value?.contents ?? []
+})
 </script>
 
 <style scoped>
@@ -119,21 +128,31 @@
     border-top: .1rem solid var(--color-hr_light);
 
     & > .headline {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 2em;
-      padding: 1.5em 0 1.3em;
-      line-height: 1.2;
       border-bottom: .1rem solid var(--color-hr_light);
 
-      & > time {
-        width: 6.5em;
-        font-weight: bold;
-      }
+      & > .link {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2em;
+        padding: 1.5em 0 1.3em;
+        line-height: 1.2;
+        color: inherit;
+        text-decoration: none;
+        transition: color .25s;
 
-      & > .title {
-        flex: 1;
-        font-weight: 600;
+        &:hover {
+          color: var(--color-base);
+        }
+
+        & > time {
+          width: 6.5em;
+          font-weight: bold;
+        }
+
+        & > .title {
+          flex: 1;
+          font-weight: 600;
+        }
       }
     }
   }

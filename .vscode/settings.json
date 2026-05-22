@@ -15,6 +15,18 @@
   },
   "emmet.includeLanguages": {
     "postcss": "css",
+    "vue": "html",
+    "vue-html": "html",
   },
   "emmet.triggerExpansionOnTab": true,
+  "editor.tabCompletion": "on",
+  "editor.snippetSuggestions": "top",
+  "editor.quickSuggestions": {
+    "other": "on",
+    "comments": "off",
+    "strings": "off",
+  },
+  "[vue]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+  },
 }

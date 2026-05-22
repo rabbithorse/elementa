@@ -2,90 +2,167 @@
   <div class="wrapper">
     <hgroup class="pageTtl">
       <h1 class="en">CONTACT</h1>
-      <p class="ja">お問い合わせ</p>
+      <p class="ja">商品化・弊社著作物IPライセンスについて</p>
     </hgroup>
 
-    <section class="formArea">
-      <form>
+    <Form v-model:form-data="formData" :confirm-rows="confirmRows" @submit="handleSubmit">
+      <template #fields>
         <table>
           <tbody>
-            <tr>
-              <th class="thStyCenter">対象タイトル</th>
+            <tr v-for="field in fields" :key="field.name">
+              <th :class="{ thStyCenter: field.thStyCenter }">
+                <template v-if="field.type === 'radio'">
+                  {{ field.label }}<small v-if="field.smallLabel">{{ field.smallLabel }}</small>
+                </template>
+                <label v-else :for="field.name">
+                  {{ field.label }}<small v-if="field.smallLabel">{{ field.smallLabel }}</small>
+                </label>
+              </th>
               <td>
-                <div class="ipName">
-                  <label><input type="radio" name="ipName" value="silverpalace">白銀の城</label>
-                  <label><input type="radio" name="ipName" value="vproject">V Project</label>
-                  <label><input type="radio" name="ipName" value="babytopia">Babytopia</label>
+                <div v-if="field.type === 'radio'" class="ipName">
+                  <FormKit
+                    :name="field.name"
+                    type="radio"
+                    :options="field.options"
+                    :validation="buildValidation(field)"
+                    :validation-label="field.label"
+                    validation-visibility="blur"
+                  />
                 </div>
-              </td>
-            </tr>
-            <tr>
-              <th><label for="name">氏名</label></th>
-              <td>
-                <input type="text" id="name" name="name">
-                <p class="example">例：山田太郎</p>
-              </td>
-            </tr>
-            <tr>
-              <th><label for="company">会社名</label></th>
-              <td>
-                <input type="text" id="company" name="company">
-                <p class="example">例：Elementa株式会社</p>
-              </td>
-            </tr>
-            <tr>
-              <th><label for="department">部署/役職<small>（任意）</small></label></th>
-              <td>
-                <input type="text" id="department" name="department">
-                <p class="example">例: ○○部/××担当</p>
-              </td>
-            </tr>
-            <tr>
-              <th><label for="email">メールアドレス</label></th>
-              <td>
-                <input type="email" id="email" name="email">
-                <p class="example">例：email@example.com</p>
-              </td>
-            </tr>
-            <tr>
-              <th><label for="phone">電話番号</label></th>
-              <td>
-                <input type="tel" id="phone" name="phone">
-                <p class="example">例：000xxxxxxxx</p>
-              </td>
-            </tr>
-            <tr>
-              <th><label for="message">お問い合わせ内容</label></th>
-              <td>
-                <textarea id="message" name="message" cols="30" rows="10"></textarea>
-                <p class="example">例：お問い合わせ内容を記入してください</p>
+                <FormKit
+                  v-else
+                  :id="field.name"
+                  :name="field.name"
+                  :type="field.type"
+                  :options="field.options"
+                  :placeholder="field.placeholder"
+                  :validation="buildValidation(field)"
+                  :validation-label="field.label"
+                  validation-visibility="blur"
+                  :rows="field.rows"
+                />
+                <p v-if="field.example" class="example">{{ field.example }}</p>
               </td>
             </tr>
           </tbody>
         </table>
-
-        <div class="privacyAgreeArea">
-          <label class="privacyAgree">
-            <input type="checkbox" name="privacyAgree" value="agree" checked>
-            <NuxtLink to="/privacy-policy" class="link">プライバシーポリシー<i class="fa-regular fa-window-restore"></i></NuxtLink>に同意する
-          </label>
-        </div>
-
-        <div class="btnArea">
-          <button type="submit">メッセージを送信する</button>
-        </div>
-      </form>
-
-      <p class="bottomText">弊社の代表メールアドレスへ<wbr>直接メールの送信も可能です。<br>一般問い合わせ：<span>contact@elementa.co.jp</span></p>
-    </section>
+      </template>
+    </Form>
   </div>
 </template>
 
 <script setup lang="ts">
+type FieldOption = { label: string, value: string }
+
+type FieldSchema = {
+  name: string
+  label: string
+  type: 'text' | 'email' | 'tel' | 'textarea' | 'radio' | 'select'
+  required?: boolean
+  rules?: string // FormKit のバリデーション文字列を直接上書きしたい場合
+  options?: FieldOption[]
+  example?: string
+  rows?: number
+  smallLabel?: string // ラベル横の補足(例: 「（記入推奨）」)
+  thStyCenter?: boolean // th の vertical-align: middle
+  placeholder?: string
+}
+
+const fields: FieldSchema[] = [
+  {
+    name: 'ipName',
+    label: 'ゲームタイトル',
+    type: 'radio',
+    required: true,
+    thStyCenter: true,
+    options: [
+      { label: '白銀の城', value: 'silverpalace' },
+      { label: 'V Project', value: 'vproject' },
+      { label: 'Babytopia', value: 'babytopia' },
+    ],
+  },
+  {
+    name: 'device',
+    label: 'ご利用の端末',
+    type: 'text',
+    required: true,
+    example: '例：iPhone 13',
+  },
+  {
+    name: 'os',
+    label: 'OSの種類・バージョン',
+    type: 'text',
+    required: true,
+    example: '例：iOS 15.4',
+  },
+  {
+    name: 'email',
+    label: '返信用メールアドレス',
+    type: 'email',
+    required: true,
+    example: '例：email@example.com',
+  },
+  {
+    name: 'loginId',
+    label: 'ゲーム内のログインID',
+    type: 'text',
+    required: true,
+    example: '例：ABCdef',
+  },
+  {
+    name: 'userName',
+    label: 'ゲーム内のユーザー名',
+    type: 'text',
+    smallLabel: '（記入推奨）',
+    example: '例：山田太郎',
+  },
+  {
+    name: 'message',
+    label: 'お問い合わせ内容',
+    type: 'textarea',
+    required: true,
+    rows: 10,
+    example: 'お問い合わせ内容を記入してください',
+  },
+]
+
+// 自動でバリデーション文字列を組み立てる(明示的に rules があればそちらを優先)
+const buildValidation = (field: FieldSchema): string | undefined => {
+  if (field.rules) return field.rules
+  const rules: string[] = []
+  if (field.required) rules.push('required')
+  if (field.type === 'email') rules.push('email')
+  return rules.length ? rules.join('|') : undefined
+}
+
+// radio / select の value から表示ラベルを引く(confirm 画面用)
+const getOptionLabel = (options: FieldOption[] | undefined, value: string): string => {
+  if (!options) return value
+  return options.find(o => o.value === value)?.label ?? value
+}
+
+// formData の初期値を fields から自動生成
+const formData = ref<Record<string, string>>(
+  Object.fromEntries(fields.map(f => [f.name, ''])),
+)
+
+// 確認画面用の {label, value} 配列も fields から自動生成
+const confirmRows = computed(() => fields.map(field => ({
+  label: field.label,
+  value: field.options
+    ? getOptionLabel(field.options, formData.value[field.name] ?? '')
+    : formData.value[field.name] ?? '',
+})))
+
+const handleSubmit = (done: () => void) => {
+  // TODO: 実際の送信処理(API 連携)
+  done()
+}
+
 useSeoMeta({
-  title: `お問い合わせ | ${inject('globalSiteName')}`,
-  ogTitle: `お問い合わせ | ${inject('globalSiteName')}`,
-  ogUrl: `${inject('globalSiteUrl')}/contact/`,
+  title: `商品化・弊社著作物IPライセンスについて | お問い合わせ | ${inject('globalSiteName')}`,
+  ogTitle: `商品化・弊社著作物IPライセンスについて | お問い合わせ | ${inject('globalSiteName')}`,
+  ogUrl: `${inject('globalSiteUrl')}/contact/form-business_01/`,
 })
 </script>
 
@@ -98,197 +175,5 @@ useSeoMeta({
   @media (--sp) {
     padding: 2em 1em 5em;
   }
-}
-
-.formArea {
-  width: 100%;
-  max-width: 86rem;
-  margin: 3em auto 0;
-  font-size: clamp(1.4rem, pxToVw(18,1400), 1.8rem);
-
-  @media (--mobile) {
-    margin-top: 3em;
-  }
-
-  @media (--sp) {
-    font-size: clamp(1.4rem, pxToVw(16,450), 1.8rem);
-  }
-
-  & table {
-    width: 100%;
-    border-collapse: collapse;
-    border: none;
-
-    & th, & td {
-      padding: 1.2em 0;
-      vertical-align: top;
-      border: none;
-
-      @media (--mobile) {
-        display: block;
-        width: 100%;
-        padding: 0;
-      }
-    }
-
-    & th {
-      width: 12em;
-      padding-top: 1.6em;
-      font-size: 1.22em;
-      font-weight: 600;
-      color: var(--color-base);
-      text-align: center;
-
-      & > small {
-        display: block;
-        font-size: .72em;
-      }
-
-      &.thStyCenter {
-        vertical-align: middle
-      }
-
-      @media (--mobile) {
-        width: 100%;
-        padding-top: 1.5em;
-        padding-bottom: .6em;
-        padding-left: .3em;
-        text-align: left;
-
-        & > small {
-          display: inline;
-          margin-left: .5em;
-        }
-      }
-    }
-
-    & td {
-      & > input[type='text'],
-      & > input[type='email'],
-      & > input[type='tel'],
-      & > textarea {
-        width: 100%;
-        padding: .8em 1em;
-        font-family: inherit;
-        font-size: clamp(1.6rem, 1em, 1.8rem);
-        line-height: 1.5;
-        background-color: #fff;
-        border: .1rem solid #000;
-        border-radius: .55em;
-        outline: none;
-        transition: box-shadow .2s;
-
-        &:focus {
-          box-shadow: 0 0 0 .2rem var(--color-base);
-        }
-      }
-
-      & > textarea {
-        min-height: 12em;
-        resize: vertical;
-      }
-
-      & > .example {
-        margin-top: .5em;
-        font-size: .85em;
-        line-height: 1;
-        color: var(--color-example_text);
-      }
-
-      & > .ipName {
-        display: flex;
-        flex-direction: column;
-        gap: .5em;
-
-        & > label {
-          display: inline-flex;
-          gap: .5em;
-          align-items: center;
-          width: fit-content;
-          margin-right: 1.5em;
-          cursor: pointer;
-
-          & > input[type='radio'] {
-            width: 1.2em;
-            height: 1.2em;
-            accent-color: var(--color-base);
-          }
-        }
-
-        @media (--mobile) {
-          padding-left: .5em;
-        }
-      }
-    }
-  }
-
-  & > form  > .privacyAgreeArea {
-    margin-top: 3em;
-    text-align: center;
-
-  &> .privacyAgree {
-      display: inline-flex;
-      gap: .2em;
-      align-items: center;
-      font-size: 1em;
-      cursor: pointer;
-
-      & > input[type='checkbox'] {
-        width: 1.2em;
-        height: 1.2em;
-        margin-right: .8em;
-        accent-color: var(--color-base);
-      }
-
-      & > .link {
-        color: inherit;
-        text-decoration: underline;
-
-        &:hover {
-          opacity: .7;
-        }
-      }
-    }
-  }
-
-  & > form > .btnArea {
-    margin-top: 3em;
-    text-align: center;
-
-    & > button[type='submit'] {
-      display: inline-block;
-      padding: 1em 3em;
-      font-size: clamp(1.6rem, pxToVw(24,1400), 2.4rem);
-      font-weight: 600;
-      color: #fff;
-      cursor: pointer;
-      background-color: #000;
-      border: none;
-      border-radius: .4em;
-      transition: opacity .2s;
-
-      &:hover {
-        opacity: .8;
-      }
-
-      @media (--sp) {
-        font-size: clamp(1.4rem, pxToVw(20,450), 2.4rem);
-      }
-    }
-  }
-
-  & > .bottomText {
-    margin-top: 3em;
-    font-size: 1.11em;
-    font-weight: 700;
-    text-align: center;
-    word-break: keep-all;
-
-    & > span {
-      display: inline-block;
-      word-break: break-all;
-    }
-  }
-
 }
 </style>
