@@ -47,47 +47,75 @@ const getPath = (p: number) => (p === 1 ? props.basePath : `/${props.pagePath}/$
 </script>
 
 <style scoped>
+.Pagination {
+  margin-top: 4em;
+
+  @media (--sp) {
+    margin-top: 2.5em;
+  }
+}
+
 .pager {
   display: flex;
-  flex-direction: row;
-  gap: 0 .5em;
+  flex-wrap: wrap;
+  gap: .4em;
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: auto;
-  font-size: 1.2rem;
+  font-size: clamp(1.4rem, pxToVw(18,1400), 1.8rem);
+  font-weight: 600;
   line-height: 1;
   list-style-type: none;
 
-  & > li {
-    display: inline-block;
+  @media (--sp) {
+    font-size: clamp(1.2rem, pxToVw(15,450), 1.8rem);
+  }
 
+  & > li {
     &.page > a {
-      display: block;
-      padding: .3em .5em;
-      line-height: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 2.4em;
+      height: 2.4em;
+      padding: 0 .6em;
+      color: var(--color-base);
       text-decoration: none;
       background-color: #fff;
-      box-shadow: 0 0 .2em rgb(0 0 0 / 10%);
-      transition: opacity .3s;
+      border: .1rem solid var(--color-base);
+      border-radius: .4em;
+      transition: color .25s, background-color .25s;
 
       &:hover {
-        opacity: .5;
+        color: #fff;
+        background-color: var(--color-base);
       }
     }
 
     &.-active > a {
+      color: #fff;
       pointer-events: none;
-      background-color: #f5d800;
+      background-color: var(--color-base);
     }
 
     &.-arrow > a {
+      color: var(--color-base);
       background-color: transparent;
-      box-shadow: none;
+      border-color: transparent;
+
+      &:hover {
+        color: var(--color-base);
+        background-color: var(--color-bg_light);
+      }
     }
 
     &.omission {
-      padding: 0 .6em .3em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 1.6em;
+      height: 2.4em;
+      color: var(--color-hr_light);
     }
   }
 }

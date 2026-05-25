@@ -1,10 +1,10 @@
 <template>
   <div class="wrapper">
-    <section class="news">
+    <section class="recruit">
       <div class="inner">
         <hgroup class="pageTtl">
-          <h1 class="en">NEWS</h1>
-          <p class="ja">お知らせ</p>
+          <h1 class="en">ENTRY</h1>
+          <p class="ja">募集要項</p>
         </hgroup>
 
         <template v-if="news && news.contents.length">
@@ -29,7 +29,7 @@
 import type { News } from '~~/types/News'
 
 const route = useRoute()
-const LIMIT = 2
+const LIMIT = 12
 
 const page = computed(() => Number(route.params.p) || 1)
 const offset = computed(() => (page.value - 1) * LIMIT)
@@ -58,9 +58,9 @@ const { data: news } = await useAsyncData(
   },
 )
 useSeoMeta({
-  title: `お知らせ | ${inject('globalSiteName')}`,
-  ogTitle: `お知らせ | ${inject('globalSiteName')}`,
-  ogUrl: `${inject('globalSiteUrl')}/news/`,
+  title: `募集要項 | ${inject('globalSiteName')}`,
+  ogTitle: `募集要項 | ${inject('globalSiteName')}`,
+  ogUrl: `${inject('globalSiteUrl')}/recruit/entry/`,
 })
 </script>
 

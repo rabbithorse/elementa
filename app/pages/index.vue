@@ -99,6 +99,10 @@ const { data: news } = await useAsyncData('top-news', async () => {
     line-height: 1.2;
     color: var(--color-base);
 
+    @media (--mobile) {
+      font-size: clamp(1.2rem, pxToVw(24,750), 2rem);
+    }
+
     & > .en {
       font-size: 2em;
       font-weight: bold;
@@ -114,6 +118,10 @@ const { data: news } = await useAsyncData('top-news', async () => {
   padding: 0 2em;
   margin: 3em auto 0;
 
+  @media (--mobile) {
+    padding: 0 1em;
+  }
+
   & > .inner {
     position: relative;
     max-width: 108rem;
@@ -126,6 +134,10 @@ const { data: news } = await useAsyncData('top-news', async () => {
     font-size: clamp(1.4rem, pxToVw(24,1400), 2.4rem);
     list-style-type: none;
     border-top: .1rem solid var(--color-hr_light);
+
+    @media (--mobile) {
+      font-size: clamp(1.2rem, pxToVw(28,750), 2rem);
+    }
 
     & > .headline {
       border-bottom: .1rem solid var(--color-hr_light);
@@ -153,6 +165,10 @@ const { data: news } = await useAsyncData('top-news', async () => {
           flex: 1;
           font-weight: 600;
         }
+
+        @media (--mobile) {
+          gap: 1em;
+        }
       }
     }
   }
@@ -168,6 +184,11 @@ const { data: news } = await useAsyncData('top-news', async () => {
   padding: 0 2em;
   margin: 8em auto 0;
 
+  @media (--mobile) {
+    padding: 0;
+    margin: 6em auto 0;
+  }
+
   & > .inner {
     display: flex;
     flex-wrap: wrap;
@@ -179,6 +200,12 @@ const { data: news } = await useAsyncData('top-news', async () => {
     margin: 0 auto;
     background: var(--color-bg_light);
     border-radius: .9em;
+
+    @media (--mobile) {
+      gap: 1em;
+      padding: 0 1em 3em;
+      border-radius: 0;
+    }
   }
 
   & .imgArea {
@@ -187,6 +214,11 @@ const { data: news } = await useAsyncData('top-news', async () => {
     gap: 1em;
     width: pxToPer(625,1300);
     transform: translateY(-10%);
+
+    @media (--mobile) {
+      width: 100%;
+      max-width: 62.5rem;
+    }
 
     & img {
       width: 100%;
@@ -206,16 +238,31 @@ const { data: news } = await useAsyncData('top-news', async () => {
   & .textArea {
     width: pxToPer(450,1300);
 
+    @media (--mobile) {
+      width: 100%;
+      max-width: 62.5rem;
+      padding: 0 1em;
+      margin: -2em auto 0;
+    }
+
     & > .text {
       margin: 1em auto .5em;
       font-size: clamp(1.4rem, pxToVw(30,1400), 3rem);
       font-weight: bold;
+
+      @media (--mobile) {
+        font-size: clamp(1.4rem, pxToVw(28,750), 3rem);
+      }
     }
 
     & > .text-en {
       margin-top: 1em;
       font-size: clamp(1rem, pxToVw(16,1400), 1.6rem);
       color: var(--color-base);
+
+      @media (--mobile) {
+        font-size: clamp(1.2rem, pxToVw(24,750), 1.6rem);
+      }
     }
 
     & > .linkArea {
@@ -227,7 +274,17 @@ const { data: news } = await useAsyncData('top-news', async () => {
 
 .recruit {
   margin: 4em auto 0;
-  background: url('/images/top/bg-recruit.png') no-repeat center / cover;
+  background: url('/images/top/bg-recruit.png') no-repeat left center / cover;
+
+  @media (--mobile) {
+    /* padding-top: 20em; */
+  }
+
+  @media (--sp) {
+    padding-top: 46vw;
+    background-position: top left;
+    background-size: 130% auto;
+  }
 
   & > .inner {
     display: flex;
@@ -239,6 +296,18 @@ const { data: news } = await useAsyncData('top-news', async () => {
     padding: 4em 3em;
     margin: 0 0 0 auto;
     background: var(--color-opacity_light);
+
+    @media (--mobile) {
+      width: 65%;
+      padding: 3em 2em;
+    }
+
+    @media (--sp) {
+      width: 100%;
+      max-width: inherit;
+      padding: 3em 2em;
+      background-color: #fff;
+    }
   }
 
   & .textArea {
@@ -246,12 +315,21 @@ const { data: news } = await useAsyncData('top-news', async () => {
       margin: 1em auto .5em;
       font-size: clamp(1.4rem, pxToVw(30,1400), 3rem);
       font-weight: bold;
+
+      @media (--mobile) {
+        font-size: clamp(1.4rem, pxToVw(28,750), 3rem);
+      }
     }
 
     & > .text-en {
       margin-top: 1em;
       font-size: clamp(1rem, pxToVw(16,1400), 1.6rem);
       color: var(--color-base);
+
+      @media (--mobile) {
+        font-size: clamp(1.2rem, pxToVw(24,750), 1.6rem);
+      }
+      
     }
 
     & > .linkArea {
