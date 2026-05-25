@@ -18,7 +18,7 @@
                   </li>
                 </ul>
                 <p class="text">{{ post.text }}</p>
-              <NuxtLink :to="`${post.url}`" class="btn">公式サイトへ<i class="fa-utility fa-semibold fa-arrow-up-right-from-square"></i></NuxtLink>
+              <NuxtLink :to="`${post.url}`" target="_blank" rel="noopener noreferrer" class="btn">公式サイトへ<i class="fa-utility fa-semibold fa-arrow-up-right-from-square"></i></NuxtLink>
             </li>
           </ul>
         </template>

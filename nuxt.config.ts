@@ -12,6 +12,14 @@ export default defineNuxtConfig({
       chunkSizeWarningLimit: 2000,
     },
   },
+  nitro: {
+    prerender: {
+      routes: [
+        '/_ipx/f_webp&q_80/common/pic-logo_black.png',
+        '/_ipx/f_webp&q_80/common/pic-logo_white.png',
+      ],
+    },
+  },
   router: {
     options: {
       scrollBehaviorType: 'smooth', // ページ内リンクのスムーズスクロール
