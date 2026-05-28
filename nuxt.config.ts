@@ -105,7 +105,7 @@ export default defineNuxtConfig({
     target: 'server',
   },
   gtag: {
-    id: 'G-CZ166WZQTV',
+    id: 'G-CZ166WZQTV', // Google Analyticsの測定IDを指定、hekk配下で念のため作りましたが、必要に応じて変更してください。
   },
   site: {
     url: 'https://elementa.co.jp', // globalSiteUrl と一致させる
