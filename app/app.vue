@@ -15,7 +15,6 @@
 const route = useRoute()
 const isTop = computed(() => route.path === '/')
 
-const typekitId = 'rbi5ujp' // サイトごとに書き換えるポイント ①
 const fontawesomeId = '8a6fd9fb88' // サイトごとに書き換えるポイント ②
 const globalSiteName = 'Elementa' // サイトごとに書き換えるポイント ③
 const twitterId = '@elementa' // サイトごとに書き換えるポイント ④
@@ -49,23 +48,12 @@ useSeoMeta({
 useHead({
   htmlAttrs: { lang: 'ja', prefix: 'og: http://ogp.me/ns#' },
   script: [
-    { src: `https://use.typekit.net/${typekitId}.js` },
     { src: `https://kit.fontawesome.com/${fontawesomeId}.js`, crossorigin: 'anonymous' },
   ],
   link: [
     { rel: 'apple-touch-icon', href: '/images/favicons/favicon.png' },
     { rel: 'icon', type: 'image/x-icon', href: '/images/favicons/favicon.ico' },
   ],
-})
-
-declare const Typekit: { load: (options: { async: boolean }) => void }
-onMounted(() => {
-  try {
-    Typekit.load({ async: true })
-  }
-  catch (e) {
-    console.log(e)
-  }
 })
 
 const LenisOptions = {
