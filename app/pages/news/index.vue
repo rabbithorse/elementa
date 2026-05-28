@@ -29,7 +29,7 @@
 import type { News } from '~~/types/News'
 
 const route = useRoute()
-const LIMIT = 2
+const LIMIT = 12
 
 const page = computed(() => Number(route.params.p) || 1)
 const offset = computed(() => (page.value - 1) * LIMIT)
