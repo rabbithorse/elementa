@@ -5,6 +5,10 @@
       <p class="ja">事業のご提案</p>
     </hgroup>
 
+    <div class="notes">
+      <p>業務提携やサービスのご提案は、下記のフォームよりお願いいたします。</p>
+    </div>
+
     <Form v-model:form-data="formData" :confirm-rows="confirmRows" @submit="handleSubmit">
       <template #fields>
         <table>
@@ -70,51 +74,39 @@ type FieldSchema = {
 
 const fields: FieldSchema[] = [
   {
-    name: 'ipName',
-    label: 'ゲームタイトル',
-    type: 'radio',
-    required: true,
-    thStyCenter: true,
-    options: [
-      { label: '白銀の城', value: 'silverpalace' },
-      { label: 'V Project', value: 'vproject' },
-      { label: 'Babytopia', value: 'babytopia' },
-    ],
-  },
-  {
-    name: 'device',
-    label: 'ご利用の端末',
+    name: 'name',
+    label: '氏名',
     type: 'text',
     required: true,
-    example: '例：iPhone 13',
+    example: '例：山田太郎',
   },
   {
-    name: 'os',
-    label: 'OSの種類・バージョン',
+    name: 'company',
+    label: '会社名',
     type: 'text',
     required: true,
-    example: '例：iOS 15.4',
+    example: '例：Elementa株式会社',
+  },
+  {
+    name: 'department',
+    label: '部署/役職',
+    smallLabel: '（記入推奨）',
+    type: 'text',
+    required: true,
+    example: '例：〇〇部/✕✕担当',
   },
   {
     name: 'email',
-    label: '返信用メールアドレス',
+    label: 'メールアドレス',
     type: 'email',
     required: true,
     example: '例：email@example.com',
   },
   {
-    name: 'loginId',
-    label: 'ゲーム内のログインID',
-    type: 'text',
-    required: true,
-    example: '例：ABCdef',
-  },
-  {
-    name: 'userName',
-    label: 'ゲーム内のユーザー名',
-    type: 'text',
-    smallLabel: '（記入推奨）',
-    example: '例：山田太郎',
+    name: 'tel',
+    label: '電話番号',
+    type: 'tel',
+    example: '例：000xxxxxx',
   },
   {
     name: 'message',
