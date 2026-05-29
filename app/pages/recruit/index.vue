@@ -14,7 +14,7 @@
       </div>
 
       <div class="textArea" data-reveal>
-        <p class="catchCopy">Elementa Japanは<br>ゲームの可能性を共に再定義し<br><span>「愛される楽しさ」</span>を創り出す仲間を募集しています。</p>
+        <p class="catchCopy">Elementa Japanは<br>ゲームの可能性を<wbr>共に再定義し<br><span>「愛される楽しさ」</span>を創り出す仲間を<wbr>募集しています。</p>
       </div>
 
     </section>
@@ -129,7 +129,7 @@ useSeoMeta({
       font-size: 1em;
       font-weight: 700;
       line-height: 1.6;
-      word-break: auto-phrase;
+      word-break: keep-all;
 
       & > span {
         color: var(--color-base);

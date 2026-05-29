@@ -1,7 +1,9 @@
 <template>
   <div class="Opening" :class="{ '-loaded': isLoaded }">
     <div class="cover" />
-    <div class="loading"><p class="text">Now Loading ...</p></div>
+    <div class="loading">
+      <NuxtImg src="/common/pic-logo_black.png" alt="Elementa" format="webp" class="logo" />
+    </div>
   </div>
 </template>
 
@@ -23,7 +25,7 @@ onMounted(() => {
     })
 
     tl.to('.Opening .cover', { yPercent: -200, duration: 2.5, delay: 1, ease: 'power2.out' })
-      .to('.Opening .loading .text', { opacity: 0, duration: 0.5, ease: 'power2.inOut' }, '<')
+      .to('.Opening .loading .logo', { opacity: 0, duration: 0.5, ease: 'power2.inOut' }, '=-2.8')
       .to('.Opening', { background: 'none', pointerEvents: 'none', duration: 0.5, ease: 'power2.inOut' }, '<')
       .to('.Opening', { opacity: 0, duration: 0.1, ease: 'power2.inOut' }, '-=1.5')
   })
@@ -76,5 +78,10 @@ onMounted(() => {
   text-align: center;
   pointer-events: none;
   transform: translate(-50%, -50%);
+
+  & .logo {
+    width: 8.5em;
+    height: auto;
+  }
 }
 </style>

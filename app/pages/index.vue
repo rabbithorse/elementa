@@ -4,10 +4,17 @@
 
     <section class="news" data-reveal-fade>
       <div class="inner">
-        <hgroup class="secTtl">
-          <h2 class="en">NEWS</h2>
-          <p class="ja">お知らせ</p>
-        </hgroup>
+        <div class="ttlArea">
+          <hgroup class="secTtl">
+            <h2 class="en">NEWS</h2>
+            <p class="ja">お知らせ</p>
+          </hgroup>          
+
+          <div class="linkArea">
+            <NuxtLink to="/news" class="defLink -en">MORE<i class="fas fa-arrow-right"></i></NuxtLink>
+          </div>
+        </div>
+
 
         <ul v-if="news?.length" class="newsList">
           <li v-for="post in news" :key="post.id" class="headline" data-reveal>
@@ -18,10 +25,6 @@
           </li>
         </ul>
         <p v-else class="empty">お知らせはありません。</p>
-
-        <div class="linkArea">
-          <NuxtLink to="/news" class="defLink -en">MORE<i class="fas fa-arrow-right"></i></NuxtLink>
-        </div>
         <FloatItem class="dec" :duration="4.2" :delay="-0.2">
           <NuxtImg src="/dec/top-01.png" alt="" format="webp" />
         </FloatItem>
@@ -38,14 +41,14 @@
             <NuxtImg src="/top/pic-company_02.png" alt="" format="webp" />
           </div>
         </div>
-        <div class="textArea">
-          <hgroup class="secTtl" data-reveal>
+        <div class="textArea" data-reveal>
+          <hgroup class="secTtl">
             <h2 class="en">COMPANY</h2>
             <p class="ja">会社情報</p>
           </hgroup>
-          <p class="text" data-reveal>素晴らしいゲーム体験は<br>独創性と<br>最先端技術の融合によって<br>生まれる。</p>
-          <p class="text-en" data-reveal>We believe that exceptional games are born where creativity meets technology.</p>
-          <div class="linkArea" data-reveal>
+          <p class="text">素晴らしいゲーム体験は<br>独創性と<br>最先端技術の融合によって<br>生まれる。</p>
+          <p class="text-en">We believe that exceptional games are born where creativity meets technology.</p>
+          <div class="linkArea">
             <NuxtLink to="/company" class="defLink -ja"><span>Elementaについて</span><i class="fas fa-arrow-right"></i></NuxtLink>
           </div>
         </div>
@@ -68,14 +71,14 @@
 
     <section class="recruit" data-reveal-fade>
       <div class="inner">
-        <div class="textArea">
-          <hgroup class="secTtl" data-reveal>
+        <div class="textArea" data-reveal>
+          <hgroup class="secTtl">
             <h2 class="en">RECRUIT</h2>
             <p class="ja">採用情報</p>
           </hgroup>   
-          <p class="text" data-reveal>素晴らしいゲームは<br>情熱を持つ人から<br>生まれる。</p>
-          <p class="text-en" data-reveal>We believe every great game starts  with passionate people.</p>
-          <div class="linkArea" data-reveal>
+          <p class="text">素晴らしいゲームは<br>情熱を持つ人から<br>生まれる。</p>
+          <p class="text-en">We believe every great game starts  with passionate people.</p>
+          <div class="linkArea">
             <NuxtLink to="/recruit" class="defLink -ja"><span>採用情報を見る</span><i class="fas fa-arrow-right"></i></NuxtLink>
           </div>
         </div>
@@ -188,6 +191,16 @@ onMounted(() => {
     margin: 0 auto;
   }
 
+  & .ttlArea {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    @media (--mobile) {
+      align-items: baseline;
+    }
+  }
+
   & .newsList {
     width: 100%;
     margin-top: 1em;
@@ -231,12 +244,6 @@ onMounted(() => {
         }
       }
     }
-  }
-
-  & .linkArea {
-    position: absolute;
-    top: 0;
-    right: 0;
   }
 
   & .dec {

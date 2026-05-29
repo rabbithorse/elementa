@@ -71,7 +71,7 @@ img {
   display: inline-flex;
   gap: .5em;
   align-items: center;
-  font-size: clamp(1.2rem, pxToVw(22,1400), 2.2rem);
+  font-size: clamp(1.6rem, pxToVw(22,1400), 2.2rem);
   font-weight: 600;
   line-height: 1;
   color: #000;

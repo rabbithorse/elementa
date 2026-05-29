@@ -156,14 +156,18 @@ onMounted(() => {
           }
         }
 
-        @media (--sp) {
+        @media (--mobile) {
           width: 100%;
 
           & > .logo {
-            width: 50%;
+            width: 45%;
             max-width: 52rem;
             margin-right: 0;
             margin-left: auto;
+          }
+
+          & > .linkArea {
+            padding-right: 0;
           }
         }
       }
