@@ -6,7 +6,7 @@
         <span><i :class="{ 'fa-solid fa-bars': !activeState, 'fa-solid fa-xmark': activeState }" /></span>
       </button>
       <div class="modal" :class="{ '-active': activeState }">
-        <nav class="navigation">
+        <nav class="navigation" @wheel="stopPropagation">
           <NavsMenu @push="deactivate" />
         </nav>
       </div>      
@@ -24,12 +24,17 @@
 </template>
 
 <script setup lang="ts">
+import { onKeyStroke } from '@vueuse/core'
 const activeState = ref<boolean>(false)
 const deactivate = () => {
   activeState.value = false
 }
 const toggleActive = () => {
   activeState.value = !activeState.value
+}
+
+const stopPropagation = (event: WheelEvent) => {
+  event.stopPropagation()
 }
 
 // ヘッダーが Hero(.Hero) の領域と重なっているあいだ .-kv を付与する
@@ -169,7 +174,9 @@ watch(() => route.path, () => {
           display: block;
           width: 100%;
           padding: 1em;
+          font-weight: 800;
           color: #fff;
+          text-decoration: none;
           opacity: 1;
           transition: all .25s;
 

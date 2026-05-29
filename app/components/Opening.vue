@@ -1,7 +1,9 @@
 <template>
   <div class="Opening" :class="{ '-loaded': isLoaded }">
     <div class="cover" />
-    <div class="loading"><p>Now Loading ...</p></div>
+    <div class="loading">
+      <NuxtImg src="/common/pic-logo_black.png" alt="Elementa" format="webp" class="logo" />
+    </div>
   </div>
 </template>
 
@@ -11,22 +13,21 @@ const isLoaded = ref(false)
 
 onMounted(() => {
   nextTick(() => {
-    // ローディングの模擬（実際のアプリケーションでは、必要なデータの読み込みなどを行います）
-    setTimeout(() => {
-      $gsap.to('.Opening', {
-        duration: 0.25,
-        opacity: 0,
-        ease: 'Power1.easeInOut',
-        onComplete: () => {
-          isLoaded.value = true
-          $gsap.to('body', {
-            duration: 0.1,
-            className: '-loaded',
-            ease: 'Power1.easeInOut',
-          })
-        },
-      })
-    }, 2500) // 2.5秒後にアニメーションを開始
+    const tl = $gsap.timeline({
+      onComplete: () => {
+        isLoaded.value = true
+        $gsap.to('body', {
+          duration: 0.01,
+          className: '-loaded',
+          ease: 'Power1.easeInOut',
+        })
+      },
+    })
+
+    tl.to('.Opening .cover', { yPercent: -200, duration: 2.5, delay: 1, ease: 'power2.out' })
+      .to('.Opening .loading .logo', { opacity: 0, duration: 0.5, ease: 'power2.inOut' }, '=-2.8')
+      .to('.Opening', { background: 'none', pointerEvents: 'none', duration: 0.5, ease: 'power2.inOut' }, '<')
+      .to('.Opening', { opacity: 0, duration: 0.1, ease: 'power2.inOut' }, '-=1.5')
   })
 })
 </script>
@@ -39,14 +40,12 @@ onMounted(() => {
   z-index: var(--zindex-op);
   width: 100%;
   height: 100%;
-  background-color: #fff;
+  background: #fff;
   opacity: 1;
-  transition: opacity 0.1s ease;
 }
 
 .Opening.-loaded {
   z-index: -1;
-  pointer-events: none;
 }
 
 .cover {
@@ -54,16 +53,35 @@ onMounted(() => {
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 200%;
   background-color: #fff;
+  transform: translateY(0%);
+
+  &:before {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    content: '';
+    background-color: var(--color-base);
+  }
 }
 
 .loading {
   position: absolute;
   top: 50%;
   left: 50%;
+  font-family: var(--font-mplus);
+  font-weight: 700;
+  color: var(--color-base);
   text-align: center;
   pointer-events: none;
   transform: translate(-50%, -50%);
+
+  & .logo {
+    width: 8.5em;
+    height: auto;
+  }
 }
 </style>

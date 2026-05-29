@@ -5,15 +5,29 @@
       <p class="ja">会社情報</p>
     </hgroup>
 
-    <div class="textArea">
-      <p class="catchCopy">楽しさを、人生のエレメントに</p>
+    <div class="textArea" data-reveal-fade>
+      <p class="catchCopy" data-reveal><span>楽しさを、</span><span>人生のエレメントに</span></p>
 
-      <p class="text">Elementaは、2020年にシンガポールで設立されたグローバルゲームブランドです。<br>独創性と最先端技術を掛け合わせ、<br>没入感あるゲーム体験と映像・音響表現を通じて、<br>世界中のプレイヤーの心に残る感動を届けることを目指しています。<br></p>
+      <p class="text" data-reveal>Elementaは、2020年にシンガポールで設立されたグローバルゲームブランドです。<br>独創性と最先端技術を掛け合わせ、<br>没入感あるゲーム体験と映像・音響表現を通じて、<br>世界中のプレイヤーの心に残る感動を届けることを目指しています。<br></p>
 
-      <p class="text">私たちElementa Japanは、ゲームを通じて日常に新たな楽しさを提供し、<br>ユーザーの皆様に長く愛される存在であり続けます。</p>
+      <p class="text" data-reveal>私たちElementa Japanは、ゲームを通じて日常に新たな楽しさを提供し、<br>ユーザーの皆様に長く愛される存在であり続けます。</p>
+      <div class="decArea" data-reveal-fade>
+        <FloatItem class="dec -d01" :duration="4.2" :delay="-0.2">
+          <NuxtImg src="/dec/company-01.png" alt="" format="webp" />
+        </FloatItem>
+        <FloatItem class="dec -d02" :duration="4.6" :delay="-1.1">
+          <NuxtImg src="/dec/company-02.png" alt="" format="webp" />
+        </FloatItem>
+        <FloatItem class="dec -d03" :duration="5" :delay="-2.3">
+          <NuxtImg src="/dec/company-03.png" alt="" format="webp" />
+        </FloatItem>
+        <FloatItem class="dec -d04" :duration="4.4" :delay="-0.7">
+          <NuxtImg src="/dec/company-04.png" alt="" format="webp" />
+        </FloatItem>
+      </div>
     </div>
 
-    <div class="companyData">
+    <div class="companyData" data-reveal-fade>
       <h2 class="subTtl">会社概要</h2>
 
       <dl>
@@ -38,13 +52,58 @@
         <dt>お問合せ先</dt>
         <dd>contact@elementa.co.jp</dd>
       </dl>
-
+      <div class="decArea">
+        <FloatItem class="dec -d05" :duration="3.8" :delay="-1.6">
+          <NuxtImg src="/dec/company-05.png" alt="" format="webp" />
+        </FloatItem>
+        <FloatItem class="dec -d06" :duration="4.8" :delay="-3">
+          <NuxtImg src="/dec/company-06.png" alt="" format="webp" />
+        </FloatItem>
+      </div>
     </div>
 
   </div>
 </template>
 
 <script setup lang="ts">
+const { $gsap } = useNuxtApp()
+onMounted(() => {
+  nextTick(() => {
+    const els = document.querySelectorAll('[data-reveal]')
+    els.forEach((el) => {
+      $gsap.set(el, { opacity: 0, y: 40 })
+      $gsap.to(el, {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: el,
+          start: 'top 85%',
+          once: true,
+        },
+      })
+    })
+
+    const fadeEls = document.querySelectorAll('[data-reveal-fade]')
+    fadeEls.forEach((el) => {
+      $gsap.set(el, { opacity: 0 })
+      $gsap.to(el, {
+        opacity: 1,
+        duration: 1,
+        ease: 'power2.inOut',
+        scrollTrigger: {
+          trigger: el,
+          start: 'top 85%',
+          once: true,
+        },
+        onStart: () => {
+          el.classList.add('-revealed')
+        },
+      })
+    })
+  })
+})
 useSeoMeta({
   title: `会社情報 | ${inject('globalSiteName')}`,
   ogTitle: `会社情報 | ${inject('globalSiteName')}`,
@@ -60,6 +119,9 @@ useSeoMeta({
 }
 
 .textArea {
+  position: relative;
+  width: 100%;
+  max-width: 126.2rem;
   margin: 3.5em auto 6em;
   font-size: clamp(1.4rem, pxToVw(24,1400), 2.4rem);
   text-align: center;
@@ -74,7 +136,10 @@ useSeoMeta({
     font-weight: bold;
     line-height: 1.2;
     color: var(--color-base);
-    word-break: auto-phrase;
+
+    & > span {
+      display: inline-block;
+    }
   }
 
   & > .text {
@@ -87,9 +152,95 @@ useSeoMeta({
       margin-top: 2em;
     }
   }
+
+  & .decArea {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    font-size: clamp(0.75rem, pxToVw(20,1262), 2rem);
+    pointer-events: none;
+
+    & > .dec {
+      position: absolute;
+
+      &.-d01 {
+        top: -9em;
+        left: 5em;
+        width: pxToPer(200,1262);
+      }
+
+      &.-d02 {
+        top: 0;
+        left: 2.5em;
+        width: pxToPer(42,1262);
+      }
+
+      &.-d03 {
+        top: 0;
+        right: -1em;
+        width: pxToPer(174,1262);
+      }
+
+      &.-d04 {
+        bottom: -1em;
+        left: 0;
+        width: pxToPer(193,1262);
+      }
+
+      @media(--mobile) {
+        &.-d01 {
+          top: -18em;
+          left: 5em;
+        }
+
+        &.-d02 {
+          top: -9em;
+          left: 2.5em;
+        }
+
+        &.-d03 {
+          top: -9em;
+          right: 0;
+        }
+
+        &.-d04 {
+          bottom: -8em;
+        }
+      }
+
+      @media(--sp) {
+        &.-d01 {
+          top: -13em;
+          left: 1em;
+          width: pxToPer(100,450);
+        }
+
+        &.-d02 {
+          top: 0;
+          left: 1em;
+          width: pxToPer(24,450);
+        }
+
+        &.-d03 {
+          top: -6em;
+          right: -1em;
+          width: pxToPer(87,450);
+        }
+
+        &.-d04 {
+          bottom: -10em;
+          left: 2em;
+          width: pxToPer(96,450);
+        }
+      }
+    }
+  }
 }
 
 .companyData {
+  position: relative;
   display: flex;
   flex-wrap: wrap;
   gap: 4em;
@@ -163,6 +314,51 @@ useSeoMeta({
 
         & > dd {
           width: calc(100% - 8em);
+        }
+      }
+    }
+  }
+
+  & .decArea {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    font-size: clamp(0.75rem, pxToVw(20,1080), 2rem);
+    pointer-events: none;
+
+    & > .dec {
+      position: absolute;
+
+      &.-d05 {
+        right: 0;
+        bottom: 15%;
+        width: pxToPer(177,1080);
+      }
+
+      &.-d06 {
+        top: 40%;
+        left: 2.5em;
+        width: pxToPer(72,1080);
+      }
+
+      @media(--mobile) {
+        &.-d05 {
+          right: 0;
+          bottom: 15%;
+        }
+
+        &.-d06 {
+          display: none;
+        }
+      }
+
+      @media(--sp) {
+        &.-d05 {
+          right: 0;
+          bottom: -5em;
+          width: pxToPer(88,450);
         }
       }
     }

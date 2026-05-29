@@ -1,11 +1,11 @@
 <template>
   <footer class="Corpfooter">
 
-    <div class="sns">
+    <!-- <div class="sns">
       <p class="text">SNS</p>
       <NuxtLink to="https://x.com/" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-x-twitter"></i></NuxtLink>
       <NuxtLink to="https://www.instagram.com/" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-instagram"></i></NuxtLink>
-    </div>
+    </div> -->
 
     <div class="info">
       <ul class="links">
@@ -34,7 +34,9 @@ const Props = withDefaults(defineProps<Props>(), {
   flex-wrap: wrap;
   gap: 1em;
   align-items: last baseline;
-  justify-content: space-between;
+
+  /* justify-content: space-between; */
+  justify-content: flex-end;
   width: 100%;
   padding: 1.5em 1em 1em;
   font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', YuGothic, 'ヒラギノ角ゴ ProN W3', "Hiragino Kaku Gothic ProN", Arial, 'メイリオ', Meiryo, sans-serif;

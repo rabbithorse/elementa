@@ -71,7 +71,7 @@ img {
   display: inline-flex;
   gap: .5em;
   align-items: center;
-  font-size: clamp(1.2rem, pxToVw(22,1400), 2.2rem);
+  font-size: clamp(1.6rem, pxToVw(22,1400), 2.2rem);
   font-weight: 600;
   line-height: 1;
   color: #000;
@@ -84,13 +84,17 @@ img {
   &.-ja {
     gap: 1em;
     font-size: .9em;
-    text-decoration: underline;
-    text-underline-offset: .4em;
   }
 
   &.-en {
     gap: .5em;
     font-weight: bold;
+  }
+
+  & > span {
+    display: inline-block;
+    text-decoration: underline;
+    text-underline-offset: .4em;
   }
 
   & > i {
@@ -103,6 +107,13 @@ img {
     color: #fff;
     background-color: #000;
     border-radius: .26em;
+    transition: transform 0.3s ease;
+  }
+
+  &:hover {
+    & > i {
+      transform: translateX(0.2em);
+    }
   }
 }
 
@@ -140,14 +151,14 @@ img {
 
 .pageTtl {
   font-size: clamp(1.4rem, pxToVw(20,1400), 2rem);
-  font-weight: bold;
+  font-weight: 800;
   line-height: 1.2;
   color: var(--color-base);
   text-align: center;
 
   & > .en {
-    font-size: 2.5em;
-    font-weight: bold;
+    font-size: 3.25em;
+    font-weight: 800;
   }
 
   & > .ja {
