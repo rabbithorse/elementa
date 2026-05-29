@@ -1,11 +1,11 @@
 <template>
   <footer class="Corpfooter">
 
-    <div class="sns">
+    <!-- <div class="sns">
       <p class="text">SNS</p>
       <NuxtLink to="https://x.com/" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-x-twitter"></i></NuxtLink>
       <NuxtLink to="https://www.instagram.com/" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-instagram"></i></NuxtLink>
-    </div>
+    </div> -->
 
     <div class="info">
       <ul class="links">
