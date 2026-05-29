@@ -15,11 +15,11 @@
 const route = useRoute()
 const isTop = computed(() => route.path === '/')
 
-const fontawesomeId = '8a6fd9fb88' // サイトごとに書き換えるポイント ②
-const globalSiteName = 'Elementa' // サイトごとに書き換えるポイント ③
-const twitterId = '@elementa' // サイトごとに書き換えるポイント ④
-const hostUrl = 'https://elementa.co.jp' // サイトごとに書き換えるポイント ⑤ ※開発時は localhost:3000 になる
-const description = 'サイト説明文'
+const fontawesomeId = '8a6fd9fb88'
+const globalSiteName = 'ELEMENTA株式会社ーー人生に、ゲームの楽しさを'
+// const twitterId = '@elementa'
+const hostUrl = 'https://elementa.co.jp'
+const description = 'Elementaはシンガポールで創業したグローバルゲームスタジオです。Elementa Japanは、楽しめるゲーム体験で「ユーザーに長く愛される会社」になることを目指しています。'
 
 const globalSiteUrl = hostUrl
 const globalOgp = hostUrl + '/images/ogps/ogp.png'
@@ -41,8 +41,8 @@ useSeoMeta({
   ogDescription: description,
   ogImage: globalOgp,
   twitterCard: 'summary_large_image',
-  twitterSite: twitterId,
-  twitterCreator: twitterId,
+  // twitterSite: twitterId,
+  // twitterCreator: twitterId,
 })
 
 useHead({
@@ -58,7 +58,7 @@ useHead({
 
 const LenisOptions = {
   smooth: true,
-  duration: 1.2,
+  duration: .8,
   autoRaf: true,
   direction: 'vertical'
 }

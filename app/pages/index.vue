@@ -2,7 +2,7 @@
   <div class="wrapper">
     <Hero />
 
-    <section class="news">
+    <section class="news" data-reveal-fade>
       <div class="inner">
         <hgroup class="secTtl">
           <h2 class="en">NEWS</h2>
@@ -10,7 +10,7 @@
         </hgroup>
 
         <ul v-if="news?.length" class="newsList">
-          <li v-for="post in news" :key="post.id" class="headline">
+          <li v-for="post in news" :key="post.id" class="headline" data-reveal>
             <NuxtLink :to="`/news/${post.id}`" class="link">
               <time :datetime="String(post.publishedAt)">{{ date(post.publishedAt) }}</time>
               <p class="title">{{ post.title }}</p>
@@ -22,46 +22,66 @@
         <div class="linkArea">
           <NuxtLink to="/news" class="defLink -en">MORE<i class="fas fa-arrow-right"></i></NuxtLink>
         </div>
+        <FloatItem class="dec" :duration="4.2" :delay="-0.2">
+          <NuxtImg src="/dec/top-01.png" alt="" format="webp" />
+        </FloatItem>
       </div>
     </section>
 
-    <section class="company">
+    <section class="company" data-reveal-fade>
       <div class="inner">
         <div class="imgArea">
-          <div class="img -i01">
+          <div class="img -i01" data-reveal>
             <NuxtImg src="/top/pic-company_01.png" alt="" format="webp" />
           </div>
-          <div class="img -i02">
+          <div class="img -i02" data-reveal>
             <NuxtImg src="/top/pic-company_02.png" alt="" format="webp" />
           </div>
         </div>
         <div class="textArea">
-          <hgroup class="secTtl">
+          <hgroup class="secTtl" data-reveal>
             <h2 class="en">COMPANY</h2>
             <p class="ja">会社情報</p>
           </hgroup>
-          <p class="text">素晴らしいゲーム体験は<br>独創性と<br>最先端技術の融合によって<br>生まれる。</p>
-          <p class="text-en">We believe that exceptional games are born where creativity meets technology.</p>
-          <div class="linkArea">
-            <NuxtLink to="/company" class="defLink -ja">Elementaについて<i class="fas fa-arrow-right"></i></NuxtLink>
+          <p class="text" data-reveal>素晴らしいゲーム体験は<br>独創性と<br>最先端技術の融合によって<br>生まれる。</p>
+          <p class="text-en" data-reveal>We believe that exceptional games are born where creativity meets technology.</p>
+          <div class="linkArea" data-reveal>
+            <NuxtLink to="/company" class="defLink -ja"><span>Elementaについて</span><i class="fas fa-arrow-right"></i></NuxtLink>
           </div>
+        </div>
+        <div class="decArea">
+          <FloatItem class="dec -d01" :duration="4.2" :delay="-0.2">
+            <NuxtImg src="/dec/top-02.png" alt="" format="webp" />
+          </FloatItem>
+          <FloatItem class="dec -d02" :duration="4.6" :delay="-1.1">
+            <NuxtImg src="/dec/top-03.png" alt="" format="webp" />
+          </FloatItem>
+          <FloatItem class="dec -d03" :duration="5" :delay="-2.3">
+            <NuxtImg src="/dec/top-04.png" alt="" format="webp" />
+          </FloatItem>
+          <FloatItem class="dec -d04" :duration="4.4" :delay="-0.7">
+            <NuxtImg src="/dec/top-05.png" alt="" format="webp" />
+          </FloatItem>
         </div>
       </div>
     </section>
 
-    <section class="recruit">
+    <section class="recruit" data-reveal-fade>
       <div class="inner">
         <div class="textArea">
-          <hgroup class="secTtl">
+          <hgroup class="secTtl" data-reveal>
             <h2 class="en">RECRUIT</h2>
             <p class="ja">採用情報</p>
           </hgroup>   
-          <p class="text">素晴らしいゲームは<br>情熱を持つ人から<br>生まれる。</p>
-          <p class="text-en">We believe every great game starts  with passionate people.</p>
-          <div class="linkArea">
-            <NuxtLink to="/recruit" class="defLink -ja">採用情報を見る<i class="fas fa-arrow-right"></i></NuxtLink>
+          <p class="text" data-reveal>素晴らしいゲームは<br>情熱を持つ人から<br>生まれる。</p>
+          <p class="text-en" data-reveal>We believe every great game starts  with passionate people.</p>
+          <div class="linkArea" data-reveal>
+            <NuxtLink to="/recruit" class="defLink -ja"><span>採用情報を見る</span><i class="fas fa-arrow-right"></i></NuxtLink>
           </div>
         </div>
+        <FloatItem class="dec" :duration="4.8" :delay="-3">
+          <NuxtImg src="/dec/top-06.png" alt="" format="webp" />
+        </FloatItem>
       </div>
     </section>
   </div>
@@ -82,6 +102,45 @@ const { data: news } = await useAsyncData('top-news', async () => {
   })
   return data.value?.contents ?? []
 })
+
+const { $gsap } = useNuxtApp()
+onMounted(() => {
+  nextTick(() => {
+    const els = document.querySelectorAll('[data-reveal]')
+    els.forEach((el) => {
+      $gsap.set(el, { opacity: 0, y: 40 })
+      $gsap.to(el, {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: el,
+          start: 'top 85%',
+          once: true,
+        },
+      })
+    })
+
+    const fadeEls = document.querySelectorAll('[data-reveal-fade]')
+    fadeEls.forEach((el) => {
+      $gsap.set(el, { opacity: 0 })
+      $gsap.to(el, {
+        opacity: 1,
+        duration: 1,
+        ease: 'power2.inOut',
+        scrollTrigger: {
+          trigger: el,
+          start: 'top 85%',
+          once: true,
+        },
+        onStart: () => {
+          el.classList.add('-revealed')
+        },
+      })
+    })
+  })
+})
 </script>
 
 <style scoped>
@@ -95,7 +154,7 @@ const { data: news } = await useAsyncData('top-news', async () => {
     gap: 2em;
     align-items: baseline;
     font-size: clamp(1.4rem, pxToVw(20,1400), 2rem);
-    font-weight: bold;
+    font-weight: 800;
     line-height: 1.2;
     color: var(--color-base);
 
@@ -104,8 +163,8 @@ const { data: news } = await useAsyncData('top-news', async () => {
     }
 
     & > .en {
-      font-size: 2em;
-      font-weight: bold;
+      font-size: 2.75em;
+      font-weight: 800;
     }
 
     & > .ja {
@@ -116,7 +175,7 @@ const { data: news } = await useAsyncData('top-news', async () => {
 
 .news {
   padding: 0 2em;
-  margin: 3em auto 0;
+  margin: 4.5em auto 0;
 
   @media (--mobile) {
     padding: 0 1em;
@@ -124,6 +183,7 @@ const { data: news } = await useAsyncData('top-news', async () => {
 
   & > .inner {
     position: relative;
+    width: 100%;
     max-width: 108rem;
     margin: 0 auto;
   }
@@ -175,8 +235,26 @@ const { data: news } = await useAsyncData('top-news', async () => {
 
   & .linkArea {
     position: absolute;
-    top: .5em;
+    top: 0;
     right: 0;
+  }
+
+  & .dec {
+    position: absolute;
+    top: -3.5em;
+    left: -5.5em;
+    width: pxToPer(71,1080);
+
+    @media screen and (width <= 1080px) {
+      display: none;
+    }
+
+    @media (--sp) {
+      top: -5em;
+      left: 1em;
+      display: block;
+      width: pxToPer(60,450);
+    }
   }
 }
 
@@ -190,6 +268,7 @@ const { data: news } = await useAsyncData('top-news', async () => {
   }
 
   & > .inner {
+    position: relative;
     display: flex;
     flex-wrap: wrap;
     gap: 2em 3em;
@@ -270,6 +349,67 @@ const { data: news } = await useAsyncData('top-news', async () => {
       text-align: right;
     }
   }
+
+  & .decArea {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+
+    & > .dec {
+    position: absolute;
+
+      &.-d01 {
+        top: -6em;
+        left: 2em;
+        width: pxToPer(185,1300);
+      }
+
+      &.-d02 {
+        top: 1em;
+        right: 1.5em;
+        width: pxToPer(71,1300);
+      }
+
+      &.-d03 {
+        top: 30%;
+        left: 3%;
+        width: pxToPer(21,1300);
+      }
+
+      &.-d04 {
+        right: 35%;
+        bottom: -1em;
+        width: pxToPer(177,1300);
+      }
+
+      @media (--mobile) {
+        &.-d01 {
+          top: -3em;
+          left: 2em;
+          width: pxToPer(120,450);
+        }
+
+        &.-d02 {
+          top: 12em;
+          right: 1em;
+          width: pxToPer(50,450);
+        }
+
+        &.-d03 {
+          display: none;
+        }
+
+        &.-d04 {
+          right: 2%;
+          bottom: 12em;
+          width: pxToPer(120,450);
+        }
+      }
+    }
+  }
 }
 
 .recruit {
@@ -287,6 +427,7 @@ const { data: news } = await useAsyncData('top-news', async () => {
   }
 
   & > .inner {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -335,6 +476,20 @@ const { data: news } = await useAsyncData('top-news', async () => {
     & > .linkArea {
       margin-top: 2em;
       text-align: right;
+    }
+  }
+
+  & .dec {
+    position: absolute;
+    bottom: 10%;
+    left: -3.5em;
+    width: pxToPer(86,710);
+
+    @media (--sp) {
+      top: -2em;
+      right: 2em;
+      left: auto;
+      width: pxToPer(70,450);
     }
   }
 }

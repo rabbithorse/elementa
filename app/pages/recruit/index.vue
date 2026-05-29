@@ -6,29 +6,29 @@
     </hgroup>
 
 
-    <section class="overview">
+    <section class="overview" data-reveal-fade>
 
       <div class="imgArea">
         <NuxtImg src="/recruit/pic-recruit_pc.png" alt="" format="webp" class="img -pc" />
         <NuxtImg src="/recruit/pic-recruit_sp.png" alt="" format="webp" class="img -sp" />
       </div>
 
-      <div class="textArea">
+      <div class="textArea" data-reveal>
         <p class="catchCopy">Elementa Japanは<br>ゲームの可能性を共に再定義し<br><span>「愛される楽しさ」</span>を創り出す仲間を募集しています。</p>
       </div>
 
     </section>
 
-    <div class="linkArea">
-      <NuxtLink to="/contact/form-person_03/" class="defLink -ja">人事・採用関連お問い合わせ<i class="fas fa-arrow-right"></i></NuxtLink>
+    <div class="linkArea" data-reveal>
+      <NuxtLink to="/contact/form-person_03/" class="defLink -ja"><span>人事・採用関連お問い合わせ</span><i class="fas fa-arrow-right"></i></NuxtLink>
     </div>
 
-    <hgroup class="pageTtl">
+    <hgroup class="pageTtl" data-reveal>
       <h2 class="en">JOIN US</h2>
       <p class="ja">詳細</p>
     </hgroup>
 
-    <section class="entryBox">
+    <section class="entryBox" data-reveal>
       <div class="inner">
         <p class="comingsoon">準備中</p>
       </div>
@@ -37,6 +37,44 @@
 </template>
 
 <script setup lang="ts">
+const { $gsap } = useNuxtApp()
+onMounted(() => {
+  nextTick(() => {
+    const els = document.querySelectorAll('[data-reveal]')
+    els.forEach((el) => {
+      $gsap.set(el, { opacity: 0, y: 40 })
+      $gsap.to(el, {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: el,
+          start: 'top 85%',
+          once: true,
+        },
+      })
+    })
+
+    const fadeEls = document.querySelectorAll('[data-reveal-fade]')
+    fadeEls.forEach((el) => {
+      $gsap.set(el, { opacity: 0 })
+      $gsap.to(el, {
+        opacity: 1,
+        duration: 1,
+        ease: 'power2.inOut',
+        scrollTrigger: {
+          trigger: el,
+          start: 'top 85%',
+          once: true,
+        },
+        onStart: () => {
+          el.classList.add('-revealed')
+        },
+      })
+    })
+  })
+})
 useSeoMeta({
   title: `採用情報 | ${inject('globalSiteName')}`,
   ogTitle: `採用情報 | ${inject('globalSiteName')}`,

@@ -34,7 +34,9 @@ const Props = withDefaults(defineProps<Props>(), {
   flex-wrap: wrap;
   gap: 1em;
   align-items: last baseline;
-  justify-content: space-between;
+
+  /* justify-content: space-between; */
+  justify-content: flex-end;
   width: 100%;
   padding: 1.5em 1em 1em;
   font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', YuGothic, 'ヒラギノ角ゴ ProN W3', "Hiragino Kaku Gothic ProN", Arial, 'メイリオ', Meiryo, sans-serif;
