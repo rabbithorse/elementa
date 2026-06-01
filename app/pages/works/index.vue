@@ -33,13 +33,13 @@
               <FloatItem class="dec -d03" :duration="5" :delay="-2.3">
                 <NuxtImg src="/dec/works-03.png" alt="" format="webp" />
               </FloatItem>
-              <FloatItem class="dec -d04" :duration="4.4" :delay="-0.7">
+              <FloatItem v-if="!isEvenCount" class="dec -d04" :duration="4.4" :delay="-0.7">
                 <NuxtImg src="/dec/works-04.png" alt="" format="webp" />
               </FloatItem>
-              <FloatItem class="dec -d05" :duration="3.8" :delay="-1.6">
+              <FloatItem v-if="!isEvenCount" class="dec -d05" :duration="3.8" :delay="-1.6">
                 <NuxtImg src="/dec/works-05.png" alt="" format="webp" />
               </FloatItem>
-              <FloatItem class="dec -d06" :duration="4.8" :delay="-3">
+              <FloatItem v-if="!isEvenCount" class="dec -d06" :duration="4.8" :delay="-3">
                 <NuxtImg src="/dec/works-06.png" alt="" format="webp" />
               </FloatItem>
             </div>
@@ -69,6 +69,12 @@ const { data: works } = await useAsyncData(
     }
   }
 )
+
+// 運用タイトルが偶数件のときは右下の装飾を隠す
+const isEvenCount = computed(() => {
+  const len = works.value?.contents.length ?? 0
+  return len > 0 && len % 2 === 0
+})
 useSeoMeta({
   title: `運用タイトル | ${inject('globalSiteName')}`,
   ogTitle: `運用タイトル | ${inject('globalSiteName')}`,
