@@ -11,7 +11,7 @@
       <ul class="links">
         <li><NuxtLink to="/site-terms/">サイト利用規約</NuxtLink></li>
         <li><NuxtLink to="/privacy-policy/">プライバシーポリシー</NuxtLink></li>
-        <li><NuxtLink to="/contents-guideline/">コンテンツ利用ガイドライン</NuxtLink></li>
+        <!-- <li><NuxtLink to="/contents-guideline/">コンテンツ利用ガイドライン</NuxtLink></li> -->
       </ul>
       <address class="copyright">©Elementa K.K.</address>
     </div>
@@ -39,8 +39,8 @@ const Props = withDefaults(defineProps<Props>(), {
   justify-content: flex-end;
   width: 100%;
   padding: 1.5em 1em 1em;
-  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', YuGothic, 'ヒラギノ角ゴ ProN W3', "Hiragino Kaku Gothic ProN", Arial, 'メイリオ', Meiryo, sans-serif;
-  font-size: clamp(1.2rem, pxToVw(20,1400), 2rem);
+  font-size: clamp(1.2rem, pxToVw(16,1400), 1.6rem);
+  font-weight: 500;
   font-feature-settings: 'palt' 1;
   line-height: 1.8;
   color: var(--color-fotter-text);
@@ -112,7 +112,7 @@ const Props = withDefaults(defineProps<Props>(), {
     & a {
       display: inline;
       padding: 0;
-      font-weight: bold;
+      font-weight: 500;
       color: #fff;
       text-decoration: none;
     }
@@ -121,7 +121,7 @@ const Props = withDefaults(defineProps<Props>(), {
   & > .copyright {
     margin-top: .5em;
     font-style: normal;
-    font-weight: bold;
+    font-weight: 500;
     color: #fff;
   }
 
