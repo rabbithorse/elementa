@@ -56,7 +56,7 @@
       </div>
     </div>
 
-    <p v-if="step === 'input'" class="bottomText">弊社の代表メールアドレスへ<wbr>直接メールの送信も可能です。<br>一般問い合わせ：<span>contact@elementa.co.jp</span></p>
+    <p v-if="step === 'input' && mailText == true" class="bottomText">弊社の代表メールアドレスへ<wbr>直接メールの送信も可能です。<br>一般問い合わせ：<span>contact@elementa.co.jp</span></p>
   </section>
 </template>
 
@@ -74,9 +74,11 @@ withDefaults(defineProps<{
   confirmRows: ConfirmRow[]
   doneTitle?: string
   doneText?: string
+  mailText?: boolean
 }>(), {
   doneTitle: 'お問い合わせありがとうございました',
   doneText: '内容を確認の上、後日担当者よりご連絡いたします。',
+  mailText: true,
 })
 
 const emit = defineEmits<{
