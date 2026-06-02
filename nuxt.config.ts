@@ -77,6 +77,14 @@ export default defineNuxtConfig({
       },
       chunkSizeWarningLimit: 2000,
     },
+    optimizeDeps: {
+      include: [
+        '@vue/devtools-core',
+        '@vue/devtools-kit',
+        'gsap',
+        'gsap/ScrollTrigger',
+      ],
+    },
   },
   nitro: {
     prerender: {
