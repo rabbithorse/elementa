@@ -168,7 +168,7 @@ useSeoMeta({
       &.-d01 {
         top: -9em;
         left: 5em;
-        width: pxToPer(200,1262);
+        width: pxToPer(175,1262);
       }
 
       &.-d02 {
@@ -332,9 +332,9 @@ useSeoMeta({
       position: absolute;
 
       &.-d05 {
-        right: 0;
+        right: -4em;
         bottom: 15%;
-        width: pxToPer(177,1080);
+        width: pxToPer(88,1080);
       }
 
       &.-d06 {
@@ -357,7 +357,7 @@ useSeoMeta({
       @media(--sp) {
         &.-d05 {
           right: 0;
-          bottom: -5em;
+          bottom: -9em;
           width: pxToPer(88,450);
         }
       }

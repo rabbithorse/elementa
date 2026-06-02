@@ -33,9 +33,6 @@
               <FloatItem class="dec -d03" :duration="5" :delay="-2.3">
                 <NuxtImg src="/dec/works-03.png" alt="" format="webp" />
               </FloatItem>
-              <FloatItem v-if="!isEvenCount" class="dec -d04" :duration="4.4" :delay="-0.7">
-                <NuxtImg src="/dec/works-04.png" alt="" format="webp" />
-              </FloatItem>
               <FloatItem v-if="!isEvenCount" class="dec -d05" :duration="3.8" :delay="-1.6">
                 <NuxtImg src="/dec/works-05.png" alt="" format="webp" />
               </FloatItem>
@@ -241,25 +238,25 @@ onMounted(() => {
     &.-d03 {
       bottom: 0;
       left: -2em;
-      width: pxToPer(191,1137);
+      width: pxToPer(180,1137);
     }
 
-    &.-d04 {
+    /* &.-d04 {
       right: 1em;
       bottom: 30em;
       width: pxToPer(177,1137);
-    }
+    } */
 
     &.-d05 {
-      right: -1em;
-      bottom: 28em;
-      width: pxToPer(44,1137);
+      right: 1em;
+      bottom: 32em;
+      width: pxToPer(102,1137);
     }
 
     &.-d06 {
       right: 20em;
       bottom: 17em;
-      width: pxToPer(94,1137);
+      width: pxToPer(77,1137);
     }
 
     @media(--sp) {
@@ -281,7 +278,7 @@ onMounted(() => {
         width: pxToPer(120,450);
       }
 
-      &.-d04, &.-d05, &.-d06 {
+      &.-d05, &.-d06 {
         display: none;
       }
     }

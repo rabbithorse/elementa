@@ -10,7 +10,7 @@
       <p class="notesText">募集情報は<NuxtLink to="/recruit">RECRUITページ</NuxtLink>をご確認ください。</p>
     </div>
 
-    <Form v-model:form-data="formData" :confirm-rows="confirmRows" @submit="handleSubmit">
+    <Form v-model:form-data="formData" :confirm-rows="confirmRows" @submit="handleSubmit" mailText="flase">
       <template #fields>
         <table>
           <tbody>

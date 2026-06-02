@@ -388,7 +388,7 @@ onMounted(() => {
 
       &.-d04 {
         right: 35%;
-        bottom: -1em;
+        bottom: -3em;
         width: pxToPer(177,1300);
       }
 
