@@ -13,8 +13,14 @@
         <NuxtImg src="/recruit/pic-recruit_sp.png" alt="" format="webp" class="img -sp" />
       </div>
 
-      <div class="textArea" data-reveal>
-        <p class="catchCopy">Elementa Japanは<br>ゲームの可能性を<wbr>共に再定義し<br><span>「愛される楽しさ」</span>を創り出す仲間を<wbr>募集しています。</p>
+      <div class="textArea" data-reveal-fade>
+        <p class="catchCopy">Elementa Japanは<br>ゲームの可能性を<wbr>共に再定義し<br><span>「楽しさ」</span>を創り出す仲間を<wbr>募集しています。</p>
+      </div>
+
+      <div class="decArea">
+        <FloatItem class="dec" :duration="4.2" :delay="-0.2">
+          <NuxtImg src="/dec/recruit-01.png" alt="" format="webp" />
+        </FloatItem>
       </div>
 
     </section>
@@ -31,6 +37,15 @@
     <section class="entryBox" data-reveal>
       <div class="inner">
         <p class="comingsoon">準備中</p>
+      </div>
+
+      <div class="decArea">
+        <FloatItem class="dec -d01" :duration="4.2" :delay="-0.2">
+          <NuxtImg src="/dec/recruit-02.png" alt="" format="webp" />
+        </FloatItem>
+        <FloatItem class="dec -d02" :duration="4.2" :delay="-0.2">
+          <NuxtImg src="/dec/recruit-03.png" alt="" format="webp" />
+        </FloatItem>
       </div>
     </section>
   </div>
@@ -122,10 +137,9 @@ useSeoMeta({
     left: 0;
     width: 100%;
     font-size: clamp(1.5rem, pxToVw(32,1400), 3.2rem);
-    transform: translateY(25%);
+    transform: translateY(5%);
 
     & > .catchCopy {
-      margin-bottom: 1em;
       font-size: 1em;
       font-weight: 700;
       line-height: 1.6;
@@ -157,6 +171,23 @@ useSeoMeta({
     }
   }
 
+  & > .decArea {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    font-size: clamp(1rem, pxToVw(20,1400), 2rem);
+    pointer-events: none;
+
+    & > .dec {
+      position: absolute;
+      top: -5em;
+      left: 6em;
+      width: pxToPer(110,1400);
+    }
+  }
+
   @media (--mobile) {
     padding: 0;
     margin-bottom: 5em;
@@ -165,14 +196,14 @@ useSeoMeta({
       top: 0;
       left: 50%;
       width: 140%;
-      height: 90%;
-      transform: translate(-50%, 20%);
+      height: 87%;
+      transform: translate(-50%, 23%);
     }
 
     & > .textArea {
       position: relative;
       font-size: clamp(1.2rem, pxToVw(28,768), 4rem);
-      transform: translateY(-1em);
+      transform: translateY(-.8em);
     }
 
     & > .imgArea {
@@ -190,11 +221,21 @@ useSeoMeta({
         }
       }
     }
+
+    &> .decArea > .dec {
+      top: -5em;
+      left: 6em;
+      width: pxToPer(55,450);
+    }
   }
 
   @media (--sp) {
     &:before {
       height: 85%;
+    }
+
+    & > .textArea {
+      transform: translateY(-1.2em);
     }
 
     & > .imgArea {
@@ -218,6 +259,7 @@ useSeoMeta({
 }
 
 .entryBox {
+  position: relative;
   width: 100%;
   max-width: 103rem;
   margin: 0 auto;
@@ -230,6 +272,46 @@ useSeoMeta({
 
     @media (--sp) {
       font-size: clamp(1.2rem, 1.3em, 2.4rem);
+    }
+  }
+
+  & > .decArea {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    font-size: clamp(1rem, pxToVw(20,1030), 2rem);
+    pointer-events: none;
+
+    & > .dec {
+      position: absolute;
+
+      &.-d01 {
+        top: -8em;
+        right: 0;
+        width: pxToPer(99,1030);
+      }
+
+      &.-d02 {
+        top: 0;
+        left: 0;
+        width: pxToPer(46,1030);
+      }
+
+      @media (--mobile) {
+        &.-d01 {
+          top: -13em;
+          right: 1em;
+          width: pxToPer(45,450);
+        }
+
+        &.-d02 {
+          top: -3em;
+          left: 2em;
+          width: pxToPer(23,450);
+        }
+      }
     }
   }
 }
